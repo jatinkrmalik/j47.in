@@ -22,8 +22,8 @@ title: j47.in
 email: 
 description: >- # this means to ignore newlines until "baseurl:"
   Passionate Principal Software Engineer with extensive experience in core programming concepts, creative problem-solving, and developing high-performance applications. Proven track record at leading tech companies like Atlassian, Adobe, Uber, and startups like Shuttl/Synaptic.
-baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://j47.in" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/j47.in" # the subpath of your site, e.g. /blog
+url: "jatinkrmalik.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jatinkrmalik
 github_username:  jatinkrmalik
 
