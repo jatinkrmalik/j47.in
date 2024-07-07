@@ -1,2 +1,1 @@
-# j47.in
-Code behind https://j47.in
+Built using hacked-jekyll
