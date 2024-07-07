@@ -28,6 +28,7 @@ twitter_username: jatinkrmalik
 github_username:  jatinkrmalik
 
 # Build settings
+remote_theme: piazzai/hacked-jekyll
 theme: hacked-jekyll
 plugins:
   - jekyll-feed
