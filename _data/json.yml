@@ -9,23 +9,32 @@
 
 - key: about_me 
   value: 
-    - The backend guy with extensive experience in core programming concepts
-    - Creative problem-solving and developing high-performance applications.
+    - The backend guy with extensive experience
+    - in core programming concepts, creative 
+    - problem-solving and developing high
+    - performance applications.
 
 - key: skills
-  value: 
-    - Software Architecture
-    - Core Programming Concepts
-    - Creative Problem-Solving
-    - High-Performance Applications
-    - Backend Development
-    - Team Leadership
+  value:
+    - Python
+    - Golang
+    - Java
+    - Kotlin
+    - Ruby
+    - C/CPP
+    - Javascript
+    - AWS
+    - GCP
+    - Baremetal servers
+    - Docker
+    - Databases
+    - You tell me?
   typed: true
 
 - key: work_experience
   value: 
     - key: Principal Engineer
-      value: Atlassian // current_role
+      value: Atlassian // <-- current_role
     - key: Software Architect
       value: Uber
     - key: SDE 3
@@ -42,7 +51,7 @@
     - value: Twitter / X
       url: https://twitter.com/jatinkrmalik
     - value: LinkedIn
-      url: https://www.linkedin.com/in/jatinkmalik
+      url: https://linkedin.com/in/jatinkmalik
     - value: GitHub
       url: https://github.com/jatinkmalik
     - value: "jatinkrmalik[at]gmail[dot]com"
