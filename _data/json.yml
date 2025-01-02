@@ -3,14 +3,14 @@
 
 - key: title
   value: Principal Software Engineer
-  
-- key: location
-  value: New Delhi, India
 
-- key: about_me 
-  value: 
+- key: location
+  value: Chicago, USA
+
+- key: about_me
+  value:
     - The backend guy with extensive experience
-    - in core programming concepts, creative 
+    - in core programming concepts, creative
     - problem-solving and developing high
     - performance applications.
 
@@ -32,7 +32,7 @@
   typed: true
 
 - key: work_experience
-  value: 
+  value:
     - key: Principal Engineer
       value: Atlassian // <-- current_role
     - key: Software Architect
@@ -45,11 +45,13 @@
       value: Adobe
     - key: SDE Intern
       value: Webyog
-    
+
 - key: get_in_touch
   value:
     - value: Twitter / X
-      url: https://twitter.com/jatinkrmalik
+      url: https://x.com/jatinkrmalik
+    - value: Youtube
+      url: https://youtube.com/@jatinkrmalik
     - value: LinkedIn
       url: https://linkedin.com/in/jatinkmalik
     - value: GitHub
