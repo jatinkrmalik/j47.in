@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" class="crt">
 
 <head>
   <meta charset="UTF-8" />
@@ -19,6 +19,51 @@
   <!-- Custom theme toggle CSS -->
   <link rel="stylesheet" href="{{ 'assets/css/theme-toggle.css' | relative_url }}" />
   <script src="{{ 'assets/js/typed.umd.js' | relative_url }}"></script>
+  <style>
+    /* CRT screen curvature effect */
+    html.crt {
+      height: 100%;
+      overflow: hidden;
+    }
+    .crt main {
+      animation: turn-on 2s linear;
+      overflow: hidden;
+    }
+    
+    /* CRT startup animation */
+    @keyframes turn-on {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9, 0.1);
+        filter: brightness(30);
+      }
+      10% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(0.9, 0.1);
+        filter: brightness(14);
+      }
+      30% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1, 0.5);
+        filter: brightness(8);
+      }
+      50% {
+        opacity: 0.2;
+        transform: translate(-50%, -50%) scale(1, 1);
+        filter: brightness(4);
+      }
+      80% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1, 1);
+        filter: brightness(1.6);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1, 1);
+        filter: brightness(1);
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -28,14 +73,17 @@
 
   </main>
   <script>
-    var typed = new Typed("#typed", {
-      stringsElement: "#strings",
-      backSpeed: 10,
-      typeSpeed: 30,
-      backDelay: 1000,
-      loop: true,
-      smartBackspace: true,
-    });
+    // Add a slight delay for the typed effect to enhance the terminal feel
+    setTimeout(function() {
+      var typed = new Typed("#typed", {
+        stringsElement: "#strings",
+        backSpeed: 30,
+        typeSpeed: 70,
+        backDelay: 800,
+        loop: true,
+        smartBackspace: true,
+      });
+    }, 2500);
   </script>
 </body>
 
