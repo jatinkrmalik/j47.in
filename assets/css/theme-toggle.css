@@ -1,9 +1,9 @@
 :root {
-  /* Light mode (default) */
-  --bg-color: var(--oc-gray-1);
-  --punct-color: var(--oc-blue-9);
-  --keyval-color: var(--oc-blue-7);
-  --hover-color: var(--oc-blue-8);
+  /* Light mode (default) - New softer color scheme */
+  --bg-color: var(--oc-gray-0);
+  --punct-color: var(--oc-indigo-9);
+  --keyval-color: var(--oc-teal-7);
+  --hover-color: var(--oc-teal-9);
 }
 
 /* Dark mode based on browser/system setting */
