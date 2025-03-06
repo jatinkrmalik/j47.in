@@ -2,59 +2,112 @@
   value: Jatin Kumar Malik
 
 - key: title
-  value: Principal Software Engineer
+  typed: true
+  value:
+    - Principal Software Engineer
+    - Backend Specialist
+    - System Architect
+    - Problem Solver
 
 - key: location
   value: Chicago, USA
 
 - key: about_me
-  value:
-    - The backend guy with extensive experience
-    - in core programming concepts, creative
-    - problem-solving and developing high
-    - performance applications.
+  value: The backend guy with extensive experience in core programming concepts, creative problem-solving and developing high-performance applications.
 
-- key: skills
-  value:
-    - Python
-    - Golang
-    - Java
-    - Kotlin
-    - Ruby
-    - C/CPP
-    - Javascript
-    - AWS
-    - GCP
-    - Baremetal servers
-    - Docker
-    - Databases
-    - You tell me?
-  typed: true
-
-- key: work_experience
+- key: experience
   value:
     - key: Principal Engineer
-      value: Atlassian // <-- current_role
+      value: Atlassian
+      url: https://www.atlassian.com
     - key: Software Architect
       value: Uber
+      url: https://www.uber.com
     - key: SDE 3
       value: Synaptic
+      url: https://www.synaptic.com
     - key: SDE 2
       value: Shuttl
     - key: SDE 1
       value: Adobe
+      url: https://www.adobe.com
     - key: SDE Intern
       value: Webyog
 
-- key: get_in_touch
+- key: expertise
   value:
-    - value: Twitter / X
-      url: https://x.com/jatinkrmalik
-    - value: Youtube
-      url: https://youtube.com/@jatinkrmalik
-    - value: LinkedIn
-      url: https://linkedin.com/in/jatinkrmalik
-    - value: GitHub
+    - key: Languages
+      value:
+        - value: Python
+          url: https://www.python.org
+        - value: Golang
+          url: https://golang.org
+        - value: Java
+          url: https://www.java.com
+        - value: Kotlin
+          url: https://kotlinlang.org
+        - value: Ruby
+          url: https://www.ruby-lang.org
+        - value: C/C++
+        - value: Javascript
+    - key: Infrastructure
+      value:
+        - value: AWS
+          url: https://aws.amazon.com
+        - value: GCP
+          url: https://cloud.google.com
+        - value: Docker
+          url: https://www.docker.com
+        - value: Kubernetes
+          url: https://kubernetes.io
+        - Baremetal servers
+    - key: Databases
+      value:
+        - value: PostgreSQL
+          url: https://www.postgresql.org
+        - value: MySQL
+          url: https://www.mysql.com
+        - value: DynamoDB
+          url: https://aws.amazon.com/dynamodb
+        - value: MongoDB
+          url: https://www.mongodb.com
+        - value: Redis
+          url: https://redis.io
+
+- key: projects
+  value:
+    - value: Personal Blog
+      url: https://jatinkrmalik.com
+    - value: GitHub Profile
       url: https://github.com/jatinkrmalik
-    - value: "jatinkrmalik[at]gmail[dot]com"
+    - value: AI Projects
+      url: https://github.com/jatinkrmalik?tab=repositories&q=ai
+    - value: Open Source Contributions
+      url: https://github.com/jatinkrmalik
+
+- key: social
+  value:
+    - key: Twitter
+      value: "@jatinkrmalik"
+      url: https://x.com/jatinkrmalik
+    - key: YouTube
+      value: "@jatinkrmalik"
+      url: https://youtube.com/@jatinkrmalik
+    - key: LinkedIn
+      value: jatinkmalik
+      url: https://linkedin.com/in/jatinkmalik
+    - key: GitHub
+      value: jatinkrmalik
+      url: https://github.com/jatinkrmalik
+    - key: Email
+      value: jatinkrmalik@gmail.com
       url: "mailto:jatinkrmalik@gmail.com"
+
+- key: quote
+  typed: true
+  value:
+    - "Code is like humor. When you have to explain it, it's bad."
+    - "Any fool can write code that a computer can understand. Good programmers write code that humans can understand."
+    - "First, solve the problem. Then, write the code."
+    - "Programming isn't about what you know; it's about what you can figure out."
+    - "The best way to predict the future is to invent it."
