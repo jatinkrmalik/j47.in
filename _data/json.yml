@@ -78,19 +78,10 @@
     - value: Redis
       url: https://redis.io
 
-- key: projects
+- key: social
   value:
     - value: Personal Blog
       url: https://jatinkrmalik.com
-    - value: GitHub Profile
-      url: https://github.com/jatinkrmalik
-    - value: AI Projects
-      url: https://github.com/jatinkrmalik?tab=repositories&q=ai
-    - value: Open Source Contributions
-      url: https://github.com/jatinkrmalik
-
-- key: social
-  value:
     - value: Twitter
       url: https://x.com/jatinkrmalik
     - value: YouTube
