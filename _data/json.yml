@@ -2,59 +2,95 @@
   value: Jatin Kumar Malik
 
 - key: title
-  value: Principal Software Engineer
+  typed: true
+  value:
+    - Principal Software Engineer
+    - Backend Specialist
+    - System Architect
+    - Problem Solver
 
 - key: location
   value: Chicago, USA
 
 - key: about_me
   value:
-    - The backend guy with extensive experience
+    - The backend guy with extensive experience 
     - in core programming concepts, creative
     - problem-solving and developing high
     - performance applications.
 
-- key: skills
+- key: experience
+  value:
+    - key: Principal Engineer
+      value: Atlassian
+      url: https://www.atlassian.com
+    - key: Software Architect
+      value: Uber
+      url: https://www.uber.com
+    - key: SDE 3
+      value: Synaptic
+      url: https://www.synaptic.com
+    - key: SDE 2
+      value: Shuttl
+      url: https://www.crunchbase.com/organization/shuttl
+    - key: SDE 1
+      value: Adobe
+      url: https://www.adobe.com
+    - key: Intern
+      value: Webyog
+      url: https://www.webyog.com
+    - key: MSP
+      value: Microsoft
+      url: https://mvp.microsoft.com/studentambassadors
+    - key: Intern
+      value: DRDO
+      url: https://www.drdo.gov.in
+
+- key: human_skills
+  value:
+    - Leadership
+    - Problem Solving
+    - Mentorship
+
+- key: languages
   value:
     - Python
     - Golang
-    - Java
-    - Kotlin
+    - Java/Kotlin
     - Ruby
-    - C/CPP
-    - Javascript
-    - AWS
-    - GCP
-    - Baremetal servers
-    - Docker
-    - Databases
-    - You tell me?
-  typed: true
+    - C/C++
 
-- key: work_experience
+- key: databases
   value:
-    - key: Principal Engineer
-      value: Atlassian // <-- current_role
-    - key: Software Architect
-      value: Uber
-    - key: SDE 3
-      value: Synaptic
-    - key: SDE 2
-      value: Shuttl
-    - key: SDE 1
-      value: Adobe
-    - key: SDE Intern
-      value: Webyog
+    - MySQL/PostgreSQL/RDS
+    - MongoDB/DynamoDB
+    - Cassandra
+    - ElasticSearch/OpenSearch
+    - Redis/Memcached
 
-- key: get_in_touch
+- key: infrastructure
   value:
-    - value: Twitter / X
-      url: https://x.com/jatinkrmalik
-    - value: Youtube
+    - AWS/GCP/Azure
+    - Docker/Kubernetes
+    - Bare Metal Servers
+
+- key: hardware
+  value:
+    - x86/ARM
+    - Raspberry Pi/Arduino/ESP32
+    - GPU Programming (CUDA/OpenCL)
+
+- key: social
+  value:
+    - value: Portfolio
+      url: https://jatinkrmalik.com
+    - value: Twitter
+      url: https://x.com/intent/user?screen_name=jatinkrmalik
+    - value: YouTube
       url: https://youtube.com/@jatinkrmalik
     - value: LinkedIn
-      url: https://linkedin.com/in/jatinkrmalik
+      url: https://linkedin.com/in/jatinkmalik
     - value: GitHub
       url: https://github.com/jatinkrmalik
-    - value: "jatinkrmalik[at]gmail[dot]com"
+    - value: Email
       url: "mailto:jatinkrmalik@gmail.com"
