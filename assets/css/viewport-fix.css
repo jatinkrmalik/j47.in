@@ -7,7 +7,6 @@
 /* Enable scrolling on HTML while preserving the background */
 html.crt {
   height: 100%; 
-  overflow: auto !important; /* Allow scrolling instead of hiding overflow */
 }
 
 /* Adjust body for viewport filling */
@@ -33,7 +32,6 @@ body {
   height: auto;
   margin: 2vh auto 2vh 5vw; /* Top, right, bottom, left */
   padding: 2vh 2vw; /* Simplified padding */
-  overflow: auto; /* Allow scrolling if needed */
   animation: turn-on 2s linear;
   text-align: left; /* Ensure text is left-aligned */
   align-self: flex-start;
