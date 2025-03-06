@@ -46,7 +46,8 @@
       value: DRDO
       url: https://www.drdo.gov.in
 
-- key: leadership
+- key: human_skills
+  typed: true
   value:
     - Leadership
     - Problem Solving
@@ -55,6 +56,7 @@
     - Adaptability
 
 - key: languages
+  typed: true
   value:
     - Python
     - Golang
@@ -67,6 +69,7 @@
     - Bash/Shell
 
 - key: frameworks
+  typed: true
   value:
     - Spring Boot
     - Hibernate
@@ -78,6 +81,7 @@
     - Fx
 
 - key: databases
+  typed: true
   value:
     - MySQL
     - PostgreSQL
@@ -89,6 +93,7 @@
     - Redis
 
 - key: infrastructure
+  typed: true
   value:
     - AWS
     - GCP
@@ -98,6 +103,7 @@
     - Bare Metal Servers
 
 - key: tools
+  typed: true
   value:
     - Git
     - Prometheus
@@ -110,6 +116,7 @@
     - CI/CD
 
 - key: hardware
+  typed: true
   value:
     - x86
     - ARM
