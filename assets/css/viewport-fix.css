@@ -27,7 +27,6 @@ body {
 .crt main {
   position: static;
   width: 90%;
-  max-width: 960px;
   min-height: 90vh; /* Use most of the viewport height */
   height: auto;
   margin: 2vh auto 2vh 5vw; /* Top, right, bottom, left */
@@ -55,10 +54,9 @@ body {
 }
 
 /* Add blinking cursor effect to the terminal */
-main::after {
+main::before {
   content: "█";
   position: static;
-  bottom: 0px;
   left: 10px;
   opacity: 0;
   animation: blink 1s infinite;

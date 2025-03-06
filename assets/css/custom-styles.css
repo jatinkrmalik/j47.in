@@ -59,4 +59,5 @@ code, pre {
   text-align: left;
   padding-left: 0;
   margin-left: 0;
+  overflow: scroll;
 } 
