@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>j47.in</title>
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
@@ -34,53 +34,13 @@
   <link rel="stylesheet" href="/assets/css/theme-toggle.css" />
   <!-- Custom styles to override theme defaults -->
   <link rel="stylesheet" href="/assets/css/custom-styles.css" />
+  <!-- Viewport fix CSS - loads last to override other styles -->
+  <link rel="stylesheet" href="/assets/css/viewport-fix.css" />
   <!-- Script to suppress source map warnings -->
   <script src="/assets/js/suppress-sourcemap.js"></script>
   <script src="/assets/js/typed.umd.js"></script>
   <style>
-    /* CRT screen curvature effect */
-    html.crt {
-      height: 100%;
-      overflow: hidden;
-    }
-    .crt main {
-      animation: turn-on 2s linear;
-      overflow: hidden;
-    }
-    
-    /* CRT startup animation */
-    @keyframes turn-on {
-      0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.9, 0.1);
-        filter: brightness(30);
-      }
-      10% {
-        opacity: 0.6;
-        transform: translate(-50%, -50%) scale(0.9, 0.1);
-        filter: brightness(14);
-      }
-      30% {
-        opacity: 0.4;
-        transform: translate(-50%, -50%) scale(1, 0.5);
-        filter: brightness(8);
-      }
-      50% {
-        opacity: 0.2;
-        transform: translate(-50%, -50%) scale(1, 1);
-        filter: brightness(4);
-      }
-      80% {
-        opacity: 0.8;
-        transform: translate(-50%, -50%) scale(1, 1);
-        filter: brightness(1.6);
-      }
-      100% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1, 1);
-        filter: brightness(1);
-      }
-    }
+    /* All CSS for CRT effect is now managed by viewport-fix.css */
     
     /* Apply IBM terminal font to body */
     body {
@@ -88,16 +48,7 @@
       font-size: 0.95em;
     }
     
-    /* Add blinking cursor effect to the terminal */
-    main::after {
-      content: "█";
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      opacity: 0;
-      animation: blink 1s infinite;
-    }
-    
+    /* Blinking cursor is also managed in viewport-fix.css */
     @keyframes blink {
       0%, 49% { opacity: 0; }
       50%, 100% { opacity: 1; }
@@ -112,14 +63,14 @@
   
   <div class="my ms">
     "<span class="key">name</span>":
-    "<span class="value">Jatin Kumar Malik</span>",
+    "<span class="value">Jatin K Malik</span>",
   </div>
   
   <div class="my ms">
     <div id="strings">
-      <span>Principal Software Engineer</span><span>Backend Specialist</span><span>System Architect</span><span>Problem Solver</span>
+      <span>Principal Software Engineer</span><span>System Architect</span><span>Problem Solver</span><span>Performance Engineer</span><span>Distributed Systems Expert</span><span>Cloud Infrastructure Specialist</span><span>Scalability Enthusiast</span>
     </div>
-    "<span class="key">title</span>":
+    "<span class="key">who_am_i</span>":
     "<span class="value"><span id="typed"></span></span>",
   </div>
   
@@ -131,16 +82,16 @@
   <div class="my ms">
     "<span class="key">about_me</span>": [
     <p class="ms">
-      "<span class="value">The backend guy with extensive experience</span>",
+      "<span class="value">Expert backend engineer specializing in distributed systems</span>",
     </p>
     <p class="ms">
-      "<span class="value">in core programming concepts, creative</span>",
+      "<span class="value">Proven track record of architecting scalable solutions</span>",
     </p>
     <p class="ms">
-      "<span class="value">problem-solving and developing high</span>",
+      "<span class="value">Deep expertise in performance optimization and system design</span>",
     </p>
     <p class="ms">
-      "<span class="value">performance applications.</span>"
+      "<span class="value">Passionate about building resilient, high-throughput applications</span>"
     </p>
     ],
   </div>
@@ -311,6 +262,8 @@
     });
     */
   </script>
+  <!-- Viewport scaling script -->
+  <script src="/assets/js/viewport-scale.js"></script>
 </body>
 
 </html> 
