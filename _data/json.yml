@@ -32,58 +32,99 @@
       url: https://www.synaptic.com
     - key: SDE 2
       value: Shuttl
+      url: https://www.crunchbase.com/organization/shuttl
     - key: SDE 1
       value: Adobe
       url: https://www.adobe.com
-    - key: SDE Intern
+    - key: Intern
       value: Webyog
+      url: https://www.webyog.com
+    - key: MSP
+      value: Microsoft
+      url: https://mvp.microsoft.com/studentambassadors
+    - key: Intern
+      value: DRDO
+      url: https://www.drdo.gov.in
+
+- key: leadership
+  value:
+    - Leadership
+    - Problem Solving
+    - Mentorship
+    - Communication
+    - Adaptability
 
 - key: languages
   value:
-    - value: Python
-      url: https://www.python.org
-    - value: Golang
-      url: https://golang.org
-    - value: Java
-      url: https://www.java.com
-    - value: Kotlin
-      url: https://kotlinlang.org
-    - value: Ruby
-      url: https://www.ruby-lang.org
+    - Python
+    - Golang
+    - Java
+    - Kotlin
+    - Ruby
     - C/C++
-    - Javascript
+    - JavaScript
+    - SQL
+    - Bash/Shell
 
-- key: infrastructure
+- key: frameworks
   value:
-    - value: AWS
-      url: https://aws.amazon.com
-    - value: GCP
-      url: https://cloud.google.com
-    - value: Docker
-      url: https://www.docker.com
-    - value: Kubernetes
-      url: https://kubernetes.io
-    - Baremetal servers
+    - Spring Boot
+    - Hibernate
+    - Apache Kafka
+    - Node.js
+    - Django
+    - Flask
+    - Rails
+    - Fx
 
 - key: databases
   value:
-    - value: PostgreSQL
-      url: https://www.postgresql.org
-    - value: MySQL
-      url: https://www.mysql.com
-    - value: DynamoDB
-      url: https://aws.amazon.com/dynamodb
-    - value: MongoDB
-      url: https://www.mongodb.com
-    - value: Redis
-      url: https://redis.io
+    - MySQL
+    - PostgreSQL
+    - MongoDB
+    - Cassandra
+    - RDS
+    - Redshift
+    - ElasticSearch
+    - Redis
+
+- key: infrastructure
+  value:
+    - AWS
+    - GCP
+    - Azure
+    - Docker
+    - Kubernetes
+    - Bare Metal Servers
+
+- key: tools
+  value:
+    - Git
+    - Prometheus
+    - Grafana
+    - New Relic
+    - Splunk
+    - Sidekiq
+    - Celery
+    - Sentry
+    - CI/CD
+
+- key: hardware
+  value:
+    - x86
+    - ARM
+    - Embedded Systems
+    - Raspberry Pi
+    - Arduino
+    - IoT Devices
+    - GPU Programming
 
 - key: social
   value:
-    - value: Personal Blog
+    - value: Portfolio
       url: https://jatinkrmalik.com
     - value: Twitter
-      url: https://x.com/jatinkrmalik
+      url: https://x.com/intent/user?screen_name=jatinkrmalik
     - value: YouTube
       url: https://youtube.com/@jatinkrmalik
     - value: LinkedIn
