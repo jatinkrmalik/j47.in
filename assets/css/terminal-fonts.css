@@ -1,0 +1,36 @@
+/* VT323 - Perfect pixel font that resembles classic terminal displays */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* IBM Plex Mono - Inspired by classic IBM terminals */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* Share Tech Mono - A tech-looking monospace font */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+/* Space Mono - A slightly more modern but still retro-futuristic terminal font */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+/* Font class selectors for easy toggling */
+.font-vt323 {
+  font-family: 'VT323', monospace;
+  font-size: 1.2em; /* Slightly larger because this font is smaller */
+  line-height: 1.2;
+}
+
+.font-ibm {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
+.font-sharetech {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+.font-space {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9em;
+  line-height: 1.5;
+} 

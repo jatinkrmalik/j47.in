@@ -1,0 +1,10 @@
+{
+  "name": "j47.in",
+  "short_name": "j47",
+  "description": "Jatin Kumar Malik's personal terminal",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00ff41",
+  "icons": []
+} 

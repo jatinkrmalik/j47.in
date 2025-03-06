@@ -53,4 +53,12 @@ plugins:
 #   - vendor/gems/
 #   - vendor/ruby/
 
+# Theme customization
+lowercase: false
+# Using CSS variables for color theming with light/dark mode support 
+# See assets/css/theme-toggle.css for color definitions
+show_quotes: true
+show_commas: true
+target: "_blank" # Opens links in new tabs
+
 

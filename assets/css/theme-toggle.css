@@ -1,0 +1,110 @@
+:root {
+  /* Matrix-style green terminal (dark mode) */
+  --matrix-bg: #000000;  
+  --matrix-punct: #00ff41;
+  --matrix-keyval: #00cc36;
+  --matrix-hover: #39ff14;
+  
+  /* Amber terminal (light mode) */
+  --amber-bg: #0d0208;
+  --amber-punct: #ffb000;
+  --amber-keyval: #ff9800;
+  --amber-hover: #ffcc00;
+}
+
+/* Light mode - Amber CRT terminal */
+:root {
+  --bg-color: var(--amber-bg);
+  --punct-color: var(--amber-punct);
+  --keyval-color: var(--amber-keyval);
+  --hover-color: var(--amber-hover);
+}
+
+/* Dark mode - Matrix-style green terminal */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: var(--matrix-bg);
+    --punct-color: var(--matrix-punct);
+    --keyval-color: var(--matrix-keyval);
+    --hover-color: var(--matrix-hover);
+  }
+}
+
+/* Apply the theme variables and CRT effects */
+body {
+  background-color: var(--bg-color);
+  color: var(--punct-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* CRT scanlines effect */
+body::before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+/* CRT flicker animation */
+body::after {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.15s infinite alternate;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.05;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Text style */
+.key, 
+.value,
+.error {
+  color: var(--keyval-color);
+  transition: color 0.3s ease;
+  text-shadow: 0 0 5px currentColor;
+}
+
+a:hover,
+a:active {
+  color: var(--hover-color);
+  transition: color 0.3s ease;
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* JSON formatting adjustments for terminal look */
+#json::before, 
+#json::after,
+.key,
+.value {
+  letter-spacing: 0.05em;
+} 
