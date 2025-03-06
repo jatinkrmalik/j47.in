@@ -47,84 +47,38 @@
       url: https://www.drdo.gov.in
 
 - key: human_skills
-  typed: true
   value:
     - Leadership
     - Problem Solving
     - Mentorship
-    - Communication
-    - Adaptability
 
 - key: languages
-  typed: true
   value:
     - Python
     - Golang
-    - Java
-    - Kotlin
+    - Java/Kotlin
     - Ruby
     - C/C++
-    - JavaScript
-    - SQL
-    - Bash/Shell
-
-- key: frameworks
-  typed: true
-  value:
-    - Spring Boot
-    - Hibernate
-    - Apache Kafka
-    - Node.js
-    - Django
-    - Flask
-    - Rails
-    - Fx
 
 - key: databases
-  typed: true
   value:
-    - MySQL
-    - PostgreSQL
-    - MongoDB
+    - MySQL/PostgreSQL/RDS
+    - MongoDB/DynamoDB
     - Cassandra
-    - RDS
-    - Redshift
-    - ElasticSearch
-    - Redis
+    - ElasticSearch/OpenSearch
+    - Redis/Memcached
 
 - key: infrastructure
-  typed: true
   value:
-    - AWS
-    - GCP
-    - Azure
-    - Docker
-    - Kubernetes
+    - AWS/GCP/Azure
+    - Docker/Kubernetes
     - Bare Metal Servers
 
-- key: tools
-  typed: true
-  value:
-    - Git
-    - Prometheus
-    - Grafana
-    - New Relic
-    - Splunk
-    - Sidekiq
-    - Celery
-    - Sentry
-    - CI/CD
-
 - key: hardware
-  typed: true
   value:
-    - x86
-    - ARM
-    - Embedded Systems
-    - Raspberry Pi
-    - Arduino
-    - IoT Devices
-    - GPU Programming
+    - x86/ARM
+    - Raspberry Pi/Arduino/ESP32
+    - GPU Programming (CUDA/OpenCL)
 
 - key: social
   value:
@@ -140,6 +94,3 @@
       url: https://github.com/jatinkrmalik
     - value: Email
       url: "mailto:jatinkrmalik@gmail.com"
-
-- key: favorite_quote
-  value: "Code is like humor. When you have to explain it, it's bad."
