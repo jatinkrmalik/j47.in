@@ -1,7 +1,7 @@
 - key: name
-  value: Jatin Kumar Malik
+  value: Jatin K Malik
 
-- key: title
+- key: who_am_i
   typed: true
   value:
     - Principal Software Engineer
@@ -21,7 +21,7 @@
 
 - key: experience
   value:
-    - key: Principal Engineer
+    - key: "Principal Engineer"
       value: Atlassian
       url: https://www.atlassian.com
     - key: Software Architect
