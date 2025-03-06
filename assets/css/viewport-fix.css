@@ -127,3 +127,57 @@ body::before, body::after {
   height: 100%;
   flex-grow: 1;
 } 
+
+/* Retro Terminal Scrollbar Styling */
+/* Width and base styling */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+  background: #000000;
+}
+
+/* Track - the area behind the thumb */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid var(--punct-color, #00ff41);
+  border-radius: 0;
+}
+
+/* Thumb - the draggable part */
+::-webkit-scrollbar-thumb {
+  background: var(--punct-color, #00ff41);
+  border: 1px solid #000;
+  box-shadow: 0 0 8px var(--punct-color, #00ff41);
+}
+
+/* Thumb hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hover-color, #39ff14);
+  box-shadow: 0 0 12px var(--hover-color, #39ff14);
+}
+
+/* Buttons at ends of scrollbar */
+::-webkit-scrollbar-button {
+  background-color: #000;
+  border: 2px solid var(--punct-color, #00ff41);
+  height: 16px;
+  width: 16px;
+  display: block;
+}
+
+/* Buttons hover effect */
+::-webkit-scrollbar-button:hover {
+  background-color: rgba(0, 255, 65, 0.2);
+}
+
+/* Corner where scrollbars meet */
+::-webkit-scrollbar-corner {
+  background-color: #000;
+  border: 2px solid var(--punct-color, #00ff41);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--punct-color, #00ff41) #000;
+} 
