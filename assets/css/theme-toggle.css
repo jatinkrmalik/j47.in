@@ -1,0 +1,37 @@
+:root {
+  /* Light mode (default) */
+  --bg-color: var(--oc-gray-1);
+  --punct-color: var(--oc-blue-9);
+  --keyval-color: var(--oc-blue-7);
+  --hover-color: var(--oc-blue-8);
+}
+
+/* Dark mode based on browser/system setting */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: var(--oc-gray-9);
+    --punct-color: var(--oc-blue-5);
+    --keyval-color: var(--oc-blue-3);
+    --hover-color: var(--oc-blue-4);
+  }
+}
+
+/* Apply the theme variables */
+body {
+  background-color: var(--bg-color);
+  color: var(--punct-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.key, 
+.value,
+.error {
+  color: var(--keyval-color);
+  transition: color 0.3s ease;
+}
+
+a:hover,
+a:active {
+  color: var(--hover-color);
+  transition: color 0.3s ease;
+} 
