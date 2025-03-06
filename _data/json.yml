@@ -1,27 +1,30 @@
 - key: name
-  value: Jatin Kumar Malik
+  value: Jatin K Malik
 
-- key: title
+- key: who_am_i
   typed: true
   value:
     - Principal Software Engineer
-    - Backend Specialist
     - System Architect
     - Problem Solver
+    - Performance Engineer
+    - Distributed Systems Expert
+    - Cloud Infrastructure Specialist
+    - Scalability Enthusiast
 
 - key: location
   value: Chicago, USA
 
 - key: about_me
   value:
-    - The backend guy with extensive experience 
-    - in core programming concepts, creative
-    - problem-solving and developing high
-    - performance applications.
+    - Expert backend engineer specializing in distributed systems
+    - Proven track record of architecting scalable solutions
+    - Deep expertise in performance optimization and system design
+    - Passionate about building resilient, high-throughput applications
 
 - key: experience
   value:
-    - key: Principal Engineer
+    - key: "Principal Engineer"
       value: Atlassian
       url: https://www.atlassian.com
     - key: Software Architect

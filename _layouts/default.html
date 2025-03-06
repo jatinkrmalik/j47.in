@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>{{ site.title }}</title>
 
 {% seo title=false %}
@@ -19,53 +19,13 @@
   <link rel="stylesheet" href="{{ 'assets/css/theme-toggle.css' | relative_url }}" />
   <!-- Custom styles to override theme defaults -->
   <link rel="stylesheet" href="{{ 'assets/css/custom-styles.css' | relative_url }}" />
+  <!-- Viewport fix CSS - loads last to override other styles -->
+  <link rel="stylesheet" href="{{ 'assets/css/viewport-fix.css' | relative_url }}" />
   <!-- Script to suppress source map warnings -->
   <script src="{{ 'assets/js/suppress-sourcemap.js' | relative_url }}"></script>
   <script src="{{ 'assets/js/typed.umd.js' | relative_url }}"></script>
   <style>
-    /* CRT screen curvature effect */
-    html.crt {
-      height: 100%;
-      overflow: hidden;
-    }
-    .crt main {
-      animation: turn-on 2s linear;
-      overflow: hidden;
-    }
-    
-    /* CRT startup animation */
-    @keyframes turn-on {
-      0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.9, 0.1);
-        filter: brightness(30);
-      }
-      10% {
-        opacity: 0.6;
-        transform: translate(-50%, -50%) scale(0.9, 0.1);
-        filter: brightness(14);
-      }
-      30% {
-        opacity: 0.4;
-        transform: translate(-50%, -50%) scale(1, 0.5);
-        filter: brightness(8);
-      }
-      50% {
-        opacity: 0.2;
-        transform: translate(-50%, -50%) scale(1, 1);
-        filter: brightness(4);
-      }
-      80% {
-        opacity: 0.8;
-        transform: translate(-50%, -50%) scale(1, 1);
-        filter: brightness(1.6);
-      }
-      100% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1, 1);
-        filter: brightness(1);
-      }
-    }
+    /* All CSS for CRT effect is now managed by viewport-fix.css */
     
     /* Apply IBM terminal font to body */
     body {
@@ -73,16 +33,7 @@
       font-size: 0.95em;
     }
     
-    /* Add blinking cursor effect to the terminal */
-    main::after {
-      content: "█";
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      opacity: 0;
-      animation: blink 1s infinite;
-    }
-    
+    /* Blinking cursor is also managed in viewport-fix.css */
     @keyframes blink {
       0%, 49% { opacity: 0; }
       50%, 100% { opacity: 1; }
@@ -117,6 +68,8 @@
     });
     */
   </script>
+  <!-- Viewport scaling script -->
+  <script src="{{ 'assets/js/viewport-scale.js' | relative_url }}"></script>
 </body>
 
 </html> 

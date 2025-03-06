@@ -54,7 +54,7 @@ plugins:
 #   - vendor/ruby/
 
 # Theme customization
-lowercase: false
+lowercase: true
 # Using CSS variables for color theming with light/dark mode support 
 # See assets/css/theme-toggle.css for color definitions
 show_quotes: true
