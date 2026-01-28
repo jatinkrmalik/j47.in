@@ -85,15 +85,15 @@
 
 - key: social
   value:
-    - value: Portfolio
-      url: https://jatinkrmalik.com
     - value: X
       url: https://x.com/intent/user?screen_name=jatinkrmalik
+    - value: Email
+      url: "mailto:jatinkrmalik@gmail.com"
+    - value: GitHub
+      url: https://github.com/jatinkrmalik
     - value: YouTube
       url: https://youtube.com/@jatinkrmalik
     - value: LinkedIn
       url: https://linkedin.com/in/jatinkrmalik
-    - value: GitHub
-      url: https://github.com/jatinkrmalik
-    - value: Email
-      url: "mailto:jatinkrmalik@gmail.com"
+    - value: Portfolio
+      url: https://jatinkrmalik.com
