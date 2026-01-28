@@ -1,1 +1,1 @@
-Sitemap: j47.in/sitemap.xml
+Sitemap: https://j47.in/sitemap.xml
