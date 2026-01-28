@@ -23,15 +23,32 @@ email:
 description: >- # this means to ignore newlines until "baseurl:"
   Hello! I'm Jatin. A Principal Software Engineer at Atlassian, architecting distributed systems and building A2A AI platforms. Previously scaled platforms at Uber and shipped products at Adobe.
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "j47.in" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jatinkrmalik
+url: "https://j47.in" # the base hostname & protocol for your site, e.g. http://example.com
+twitter:
+  username: jatinkrmalik
+  card: summary
 github_username:  jatinkrmalik
+author:
+  name: Jatin K Malik
+  url: https://jatinkrmalik.com
+
+# SEO
+logo: /assets/logo.svg
+image: /assets/og-image.svg
+social:
+  name: Jatin K Malik
+  links:
+    - https://jatinkrmalik.com
+    - https://twitter.com/jatinkrmalik
+    - https://linkedin.com/in/jatinkrmalik
+    - https://github.com/jatinkrmalik
 
 # Build settings
 remote_theme: piazzai/hacked-jekyll
 theme: hacked-jekyll
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default.
