@@ -17,10 +17,10 @@
 
 - key: about_me
   value:
-    - Expert backend engineer specializing in distributed systems
-    - Proven track record of architecting scalable solutions
-    - Deep expertise in performance optimization and system design
-    - Passionate about building resilient, high-throughput applications
+    - Architecting and scaling distributed systems that serve millions of users at Uber and Atlassian
+    - Building A2A (Agent-to-Agent) AI platforms that enable autonomous AI agents to collaborate and execute complex workflows
+    - Solving hard engineering problems at scale - from data portability platforms to real-time IoT systems
+    - 15+ years shipping production code across Adobe, Uber, Synaptic, Shuttl, and Atlassian
 
 - key: experience
   value:
