@@ -1,0 +1,19 @@
+<svg width="256" height="256" xmlns="http://www.w3.org/2000/svg">
+  <!-- Terminal window with solid colors for better ICO conversion -->
+  <rect x="0" y="0" width="256" height="256" rx="32" fill="#2d2d2d"/>
+  
+  <!-- Title bar -->
+  <rect x="0" y="0" width="256" height="56" rx="32" fill="#363636"/>
+  <rect x="0" y="28" width="256" height="28" fill="#363636"/>
+  
+  <!-- Three macOS dots - solid colors -->
+  <circle cx="44" cy="28" r="12" fill="#ff5f56"/>
+  <circle cx="84" cy="28" r="12" fill="#ffbd2e"/>
+  <circle cx="124" cy="28" r="12" fill="#27c93f"/>
+  
+  <!-- Content area -->
+  <rect x="8" y="64" width="240" height="184" rx="16" fill="#0a0a0a"/>
+  
+  <!-- Large terminal prompt symbol -->
+  <text x="128" y="180" text-anchor="middle" font-family="monospace" font-size="120" fill="#00ff41" font-weight="bold">&gt;_</text>
+</svg>
