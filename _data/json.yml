@@ -52,8 +52,11 @@
 - key: human_skills
   value:
     - Leadership
+    - System Design & Architecture
     - Problem Solving
     - Mentorship
+    - Technical Writing
+
 
 - key: languages
   value:
@@ -71,11 +74,31 @@
     - ElasticSearch/OpenSearch
     - Redis/Memcached
 
+- key: ai_ml
+  value:
+    - Large Language Models (GPT, Claude, Llama, Gemini)
+    - RAG & Vector Databases (Pinecone, Weaviate, pgvector, Chroma)
+    - AI/ML Frameworks (LangChain, LlamaIndex, OpenAI SDK, Anthropic SDK)
+    - Agent Frameworks & A2A (MCP, AutoGPT, CrewAI, A2A Protocol)
+    - Prompt Engineering & Fine-tuning (LoRA, QLoRA)
+    - Embeddings & Semantic Search
+    - Model Deployment (vLLM, TGI, ONNX)
+
 - key: infrastructure
   value:
     - AWS/GCP/Azure
     - Docker/Kubernetes
-    - Bare Metal Servers
+    - Terraform/Pulumi (IaC)
+    - Prometheus/Grafana (Observability)
+    - GitHub Actions/ArgoCD (CI/CD)
+    - Istio/Linkerd (Service Mesh)
+
+- key: messaging
+  value:
+    - Apache Kafka (Event Streaming)
+    - RabbitMQ/ActiveMQ
+    - gRPC/Protobuf
+    - Apache Pulsar
 
 - key: hardware
   value:
