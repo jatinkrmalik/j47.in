@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="{{ 'assets/css/custom-styles.css' | relative_url }}" />
   <!-- Viewport fix CSS - loads last to override other styles -->
   <link rel="stylesheet" href="{{ 'assets/css/viewport-fix.css' | relative_url }}" />
+  <!-- CRT scanline overlay effects -->
+  <link rel="stylesheet" href="{{ 'assets/css/crt-overlay.css' | relative_url }}" />
   <!-- Script to suppress source map warnings -->
   <script src="{{ 'assets/js/suppress-sourcemap.js' | relative_url }}"></script>
   <script src="{{ 'assets/js/typed.umd.js' | relative_url }}"></script>
@@ -42,6 +44,10 @@
 </head>
 
 <body>
+<div class="crt-scanlines"></div>
+<div class="crt-scanline"></div>
+<div class="crt-flicker"></div>
+
   <main>
 
 {{ content }}
