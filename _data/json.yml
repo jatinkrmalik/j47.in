@@ -22,6 +22,36 @@
     - Solving hard engineering problems at scale - from data portability platforms to real-time IoT systems
     - 15+ years shipping production code across Adobe, Uber, Synaptic, Shuttl, and Atlassian
 
+- key: projects
+  value:
+    - key: VocaHQ
+      value: Offline voice dictation on every machine
+      url: https://vocahq.com
+    - key: Vocalinux
+      value: Voice dictation for Linux
+      url: https://vocalinux.com
+    - key: VocaMac
+      value: On-device dictation for macOS
+      url: https://vocamac.com
+    - key: VocaWin
+      value: On-device dictation for Windows (beta)
+      url: https://vocawin.com
+    - key: VocaPhone
+      value: On-device dictation for iPhone and Android
+      url: https://vocaphone.vocahq.com
+    - key: LLMFeeder
+      value: Webpage to Markdown for LLM context
+      url: https://llmfeeder.fyi
+    - key: Labelarium
+      value: Offline label-printer PWA
+      url: https://labelarium.com
+    - key: localcaption
+      value: Local Whisper captions for video and audio
+      url: https://github.com/jatinkrmalik/localcaption
+    - key: pmptr
+      value: Click-through teleprompter overlay
+      url: https://jatinkrmalik.com/pmptr/
+
 - key: experience
   value:
     - key: "Principal Engineer"
