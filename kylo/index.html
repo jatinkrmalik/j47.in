@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f2eee6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171512" media="(prefers-color-scheme: dark)">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Kylo is a friendly dog. Please don’t chase him. Find his owner’s contact details at j47.in.">
+  <link rel="icon" href="data:,">
+  <title>You’ve found Kylo</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --paper: #f2eee6;
+      --halo: rgba(210, 152, 88, .24);
+      --ink: #211b16;
+      --soft-ink: #594e44;
+      --rule: rgba(53, 38, 25, .14);
+      --frame: #fffaf3;
+      --frame-line: rgba(84, 58, 33, .18);
+      --button: #211b16;
+      --button-ink: #fffaf4;
+      --button-subtle: #decfbe;
+      --button-pressed: #3c3128;
+      --outline: rgba(33, 27, 22, .28);
+      --outline-fill: rgba(33, 27, 22, .06);
+      --chip: rgba(45, 34, 24, .07);
+      --shadow: rgba(69, 39, 13, .3);
+      --focus: #9a552a;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #171512;
+        --halo: rgba(185, 116, 51, .18);
+        --ink: #f6f0e7;
+        --soft-ink: #cbbcac;
+        --rule: rgba(255, 240, 220, .14);
+        --frame: #28231e;
+        --frame-line: rgba(255, 235, 210, .15);
+        --button: #f3ece2;
+        --button-ink: #211b16;
+        --button-subtle: #5e5145;
+        --button-pressed: #ded2c4;
+        --outline: rgba(246, 238, 226, .34);
+        --outline-fill: rgba(246, 238, 226, .08);
+        --chip: rgba(246, 238, 226, .08);
+        --shadow: rgba(0, 0, 0, .55);
+        --focus: #e9b27c;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      min-width: 320px;
+      background: var(--paper);
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      color: var(--ink);
+      background:
+        radial-gradient(26rem 20rem at 50% -3rem, var(--halo), transparent 66%),
+        var(--paper);
+      font-family: "Avenir Next", Avenir, "Segoe UI", Helvetica, sans-serif;
+      font-size: 17px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    main {
+      width: min(100%, 29rem);
+      margin: 0 auto;
+      padding:
+        calc(env(safe-area-inset-top, 0px) + 1.4rem)
+        calc(env(safe-area-inset-right, 0px) + 1.25rem)
+        calc(env(safe-area-inset-bottom, 0px) + 2rem)
+        calc(env(safe-area-inset-left, 0px) + 1.25rem);
+    }
+
+    .portrait {
+      position: relative;
+      width: clamp(13.5rem, 61vw, 16rem);
+      aspect-ratio: 1;
+      margin: .15rem auto 1.35rem;
+      isolation: isolate;
+    }
+
+    .portrait::before {
+      content: "";
+      position: absolute;
+      inset: -9%;
+      z-index: -2;
+      border-radius: 47% 53% 44% 56% / 53% 45% 55% 47%;
+      background: conic-gradient(from 20deg, #d59a58, #f1d19f 24%, #789081 49%, #b06e46 73%, #d59a58);
+      opacity: .84;
+      animation: portrait-orbit 14s linear infinite;
+    }
+
+    .portrait::after {
+      content: "";
+      position: absolute;
+      inset: -4%;
+      z-index: -1;
+      border: 1px solid var(--frame-line);
+      border-radius: 56% 44% 52% 48% / 43% 56% 44% 57%;
+      background: var(--frame);
+      box-shadow: 0 24px 46px -24px var(--shadow);
+      animation: portrait-morph 7s ease-in-out infinite alternate;
+    }
+
+    .portrait-photo {
+      position: absolute;
+      inset: 1.5%;
+      overflow: hidden;
+      border-radius: 48% 52% 46% 54% / 52% 45% 55% 48%;
+      background: #cab690;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.36);
+      animation: portrait-morph 7s ease-in-out infinite alternate-reverse;
+    }
+
+    .portrait-photo svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      transform: scale(1.025);
+      animation: portrait-breathe 4.8s ease-in-out infinite;
+    }
+
+    .avatar-dog {
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+      animation: avatar-breathe 3.8s ease-in-out infinite;
+    }
+
+    .avatar-head {
+      transform-box: fill-box;
+      transform-origin: 50% 76%;
+      animation: avatar-head-tilt 7s ease-in-out infinite;
+    }
+
+    .avatar-eye {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: avatar-blink 5.2s linear infinite;
+    }
+
+    .avatar-tongue {
+      transform-box: fill-box;
+      transform-origin: 50% 0;
+      animation: avatar-tongue 2.6s ease-in-out infinite;
+    }
+
+    .avatar-ear-right {
+      transform-box: fill-box;
+      transform-origin: 12% 14%;
+      animation: avatar-ear 7s ease-in-out infinite;
+    }
+
+    .portrait-orbit {
+      position: absolute;
+      inset: -12%;
+      z-index: 2;
+      border: 1px dashed rgba(91, 67, 42, .4);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: portrait-orbit 18s linear infinite reverse;
+    }
+
+    .portrait-orbit::before,
+    .portrait-orbit::after {
+      content: "";
+      position: absolute;
+      width: .6rem;
+      height: .6rem;
+      border-radius: 50%;
+      background: #f6dfab;
+      box-shadow: 0 0 0 4px rgba(246, 223, 171, .22);
+    }
+
+    .portrait-orbit::before { top: 12%; right: 13%; }
+    .portrait-orbit::after {
+      bottom: 11%;
+      left: 14%;
+      width: .38rem;
+      height: .38rem;
+      background: #ad6846;
+    }
+
+    .portrait-sparkle {
+      position: absolute;
+      z-index: 3;
+      width: 1.35rem;
+      height: 1.35rem;
+      color: #fff4d2;
+      filter: drop-shadow(0 2px 6px rgba(81, 54, 30, .28));
+      animation: sparkle 2.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .portrait-sparkle::before,
+    .portrait-sparkle::after {
+      content: "";
+      position: absolute;
+      inset: 47% 0 auto;
+      height: 2px;
+      border-radius: 1px;
+      background: currentColor;
+    }
+
+    .portrait-sparkle::after { transform: rotate(90deg); }
+    .portrait-sparkle.one { top: 8%; left: -2%; }
+    .portrait-sparkle.two {
+      right: -4%;
+      bottom: 18%;
+      width: .85rem;
+      height: .85rem;
+      color: #dca568;
+      animation-delay: -1.4s;
+    }
+
+    @keyframes portrait-breathe {
+      0%, 100% { transform: scale(1.025) translateY(0); }
+      50% { transform: scale(1.045) translateY(-1%); }
+    }
+
+    @keyframes portrait-morph {
+      0% { border-radius: 48% 52% 46% 54% / 52% 45% 55% 48%; }
+      100% { border-radius: 55% 45% 52% 48% / 45% 54% 46% 55%; }
+    }
+
+    @keyframes avatar-breathe {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-1.5px) scale(1.012, 1.018); }
+    }
+
+    @keyframes avatar-head-tilt {
+      0%, 35%, 100% { transform: rotate(0deg) translateY(0); }
+      43%, 55% { transform: rotate(-4deg) translate(-2px, -1px); }
+      64% { transform: rotate(1.5deg) translateY(0); }
+    }
+
+    @keyframes avatar-blink {
+      0%, 43%, 47%, 79%, 83%, 100% { transform: scaleY(1); }
+      45%, 81% { transform: scaleY(.08); }
+    }
+
+    @keyframes avatar-tongue {
+      0%, 100% { transform: rotate(-1deg) translateY(0); }
+      50% { transform: rotate(2deg) translateY(2px); }
+    }
+
+    @keyframes avatar-ear {
+      0%, 35%, 100% { transform: rotate(0deg); }
+      44%, 54% { transform: rotate(6deg); }
+      62% { transform: rotate(-2deg); }
+    }
+
+    @keyframes portrait-orbit {
+      to { transform: rotate(1turn); }
+    }
+
+    @keyframes sparkle {
+      0%, 100% { transform: rotate(0deg) scale(.7); opacity: .45; }
+      50% { transform: rotate(45deg) scale(1); opacity: 1; }
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Baskerville, "Iowan Old Style", Palatino, Georgia, serif;
+      font-size: clamp(2.35rem, 10vw, 3.2rem);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -.034em;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    h1 em {
+      font-weight: inherit;
+    }
+
+    .note {
+      margin: .85rem 0 0;
+      color: var(--soft-ink);
+      font-size: 1.06rem;
+      font-weight: 550;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .note strong {
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    .actions {
+      display: grid;
+      gap: .7rem;
+      margin-top: 1.65rem;
+    }
+
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.65rem;
+      padding: .85rem 1.15rem;
+      border-radius: 1rem;
+      color: inherit;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .button-inner {
+      display: grid;
+      grid-template-columns: 1.45rem auto;
+      align-items: center;
+      gap: .85rem;
+    }
+
+    .button svg {
+      display: block;
+      width: 1.45rem;
+      height: 1.45rem;
+    }
+
+    .button-copy {
+      display: block;
+      line-height: 1.2;
+      text-align: left;
+    }
+
+    .button-title {
+      display: block;
+      font-size: 1.08rem;
+      font-weight: 700;
+      letter-spacing: -.012em;
+    }
+
+    .owner-details {
+      margin: 1.15rem auto 0;
+      max-width: 23rem;
+      color: var(--soft-ink);
+      font-size: .94rem;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .contact {
+      color: var(--button-ink);
+      background: var(--button);
+      box-shadow: 0 14px 24px -18px var(--shadow);
+    }
+
+    .button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .contact:active { background: var(--button-pressed); }
+
+    .facts {
+      margin: 1.7rem 0 0;
+      padding: 0;
+    }
+
+    .facts > div {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: .35rem 1rem;
+      padding: .82rem .08rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .facts dt {
+      margin: 0;
+      color: var(--soft-ink);
+      font-size: .96rem;
+      font-weight: 540;
+    }
+
+    .facts dd {
+      margin: 0;
+      font-size: .96rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      text-align: right;
+    }
+
+    .facts .microchip {
+      padding: .2rem .45rem;
+      border-radius: .4rem;
+      background: var(--chip);
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: .86rem;
+      font-weight: 570;
+      letter-spacing: .025em;
+      user-select: all;
+      -webkit-user-select: all;
+    }
+
+    footer {
+      margin-top: 1.3rem;
+      color: var(--soft-ink);
+      font-size: .8rem;
+      text-align: center;
+    }
+
+    @media (hover: hover) {
+      .contact:hover { background: var(--button-pressed); }
+    }
+
+    @media (min-width: 720px) {
+      main { padding-top: 4rem; }
+    }
+
+    @media (max-width: 350px) {
+      main { padding-left: 1rem; padding-right: 1rem; }
+      .facts > div { flex-wrap: wrap; }
+    }
+
+    @media (max-height: 630px) {
+      .portrait { width: 7.8rem; margin-bottom: .7rem; }
+      h1 { font-size: 2rem; }
+      .note { margin-top: .45rem; }
+      .actions { margin-top: 1rem; }
+      main { padding-top: calc(env(safe-area-inset-top, 0px) + .75rem); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .portrait::before,
+      .portrait::after,
+      .portrait-photo,
+      .portrait-photo svg,
+      .avatar-dog,
+      .avatar-head,
+      .avatar-eye,
+      .avatar-tongue,
+      .avatar-ear-right,
+      .portrait-orbit,
+      .portrait-sparkle { animation: none; }
+    }
+
+    @media (forced-colors: active) {
+      .portrait, .button { border: 2px solid ButtonText; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="portrait" role="img" aria-label="Animated portrait of Kylo, a black and warm-brown Golden Retriever mix with cream eyebrows and muzzle">
+      <div class="portrait-orbit" aria-hidden="true"></div>
+      <div class="portrait-photo">
+      <svg viewBox="0 0 260 260" aria-hidden="true" focusable="false">
+        <title id="kylo-avatar-title">Animated portrait of Kylo</title>
+        <desc id="kylo-avatar-desc">Kylo is a black and warm-brown Golden Retriever mix with floppy ears, cream eyebrows and muzzle, and a pink tongue.</desc>
+        <rect width="260" height="260" fill="#d7e3df"/>
+        <circle cx="197" cy="54" r="31" fill="#f2d695" opacity=".82"/>
+        <path d="M0 119C41 94 81 100 119 117c40 18 82 17 141-13v75H0z" fill="#899b79"/>
+        <path d="M0 156c51-13 91-8 132 7 45 16 83 12 128-7v104H0z" fill="#d5c29e"/>
+        <g class="avatar-dog">
+          <path d="M46 260c1-44 15-78 43-96 18-12 36-17 54-16 41 2 67 30 72 72l5 40z" fill="#302a25"/>
+          <path d="M88 260c3-37 13-67 36-90 11-11 23-15 35-13 24 4 42 37 43 103z" fill="#8a6543"/>
+          <path d="M103 260c3-31 8-53 23-73 8-10 18-10 27 0 15 17 22 42 24 73z" fill="#ead8b8"/>
+          <path d="M75 205c7-14 15-25 26-34-2 20 0 36 6 48-12-1-23-6-32-14z" fill="#171717" opacity=".8"/>
+
+          <g class="avatar-head">
+            <path d="M76 68c-23 5-36 25-34 53 2 24 15 47 38 57 9 4 20-2 22-14l8-58c3-25-10-43-34-38z" fill="#2b2521"/>
+            <path class="avatar-ear-right" d="M183 66c23 6 36 26 32 54-3 24-17 45-40 55-9 3-19-4-20-16l-4-59c-1-25 9-40 32-34z" fill="#29231f"/>
+            <path d="M63 101c-4-20 2-39 19-51 15-10 34-14 52-12 25 2 47 14 58 35 9 17 8 37 2 55-7 23-24 46-48 52-29 7-57-7-71-31-8-14-10-31-12-48z" fill="#765438"/>
+            <path d="M72 96c0-24 14-44 36-53 17-7 35-5 49 2-22 4-35 14-38 30-3 14-2 34-16 43-10 7-22 4-31-3z" fill="#211d1b"/>
+            <path d="M169 49c20 12 30 33 26 56-2 14-6 26-14 36-4-18-14-29-29-36-9-4-15-13-13-23 3-18 14-28 30-33z" fill="#302721"/>
+            <path d="M105 45c10-5 24-8 36-6 8 1 14 3 19 7-13 1-22 7-29 17-6 9-10 21-14 32-5-12-9-26-12-50z" fill="#b58a5d"/>
+            <path d="M87 77c7-10 17-14 29-12-2 8-7 15-15 19-6 3-11 1-14-7z" fill="#d9b77e"/>
+            <path d="M149 69c11-3 21 1 28 10-3 8-8 11-15 8-8-3-12-9-13-18z" fill="#d9b77e"/>
+
+            <g class="avatar-eye">
+              <ellipse cx="103" cy="94" rx="8" ry="9" fill="#1a1715"/>
+              <circle cx="106" cy="91" r="2.3" fill="#fff9ea"/>
+            </g>
+            <g class="avatar-eye">
+              <ellipse cx="160" cy="95" rx="8" ry="9" fill="#1a1715"/>
+              <circle cx="163" cy="92" r="2.3" fill="#fff9ea"/>
+            </g>
+
+            <path d="M94 120c8-13 20-19 36-18 17 0 30 7 38 20 8 13 4 31-9 40-8 6-18 9-29 9-12 0-23-3-31-10-12-10-14-28-5-41z" fill="#ead8b8"/>
+            <path d="M107 121c5-8 13-12 23-12 11 0 20 5 25 13-5-2-10-2-15 0-6 3-13 3-19 0-5-2-9-2-14-1z" fill="#c39b70" opacity=".62"/>
+            <path d="M113 124c3-9 12-13 20-13 10 0 19 5 20 13 1 6-5 12-11 15-6 4-12 4-18 0-7-3-13-9-11-15z" fill="#171615"/>
+            <ellipse cx="129" cy="118" rx="8" ry="3.4" fill="#4b4946" opacity=".72"/>
+            <path d="M111 148c12 8 28 8 41 0-2 15-11 24-21 24-10 0-18-9-20-24z" fill="#241b19"/>
+            <g class="avatar-tongue">
+              <path d="M119 153c7 4 16 4 23 0l-1 22c-1 9-5 14-11 14-7 0-11-6-11-15z" fill="#ec8f99"/>
+              <path d="M130 158v24" fill="none" stroke="#d97583" stroke-width="1.8" stroke-linecap="round" opacity=".72"/>
+            </g>
+            <path d="M87 154c13 20 28 29 45 29 18 0 34-9 47-29-4 23-22 41-47 41-24 0-41-17-45-41z" fill="#d2ad7e" opacity=".5"/>
+          </g>
+
+        </g>
+      </svg>
+      </div>
+      <span class="portrait-sparkle one" aria-hidden="true"></span>
+      <span class="portrait-sparkle two" aria-hidden="true"></span>
+    </div>
+
+    <h1>You’ve found <em>Kylo</em>.</h1>
+    <p class="note"><strong>Please don’t chase him.</strong><br>He’s friendly.</p>
+    <p class="owner-details">His owner is Jatin. Contact details are on his homepage.</p>
+
+    <div class="actions" aria-label="Contact Kylo’s owner">
+      <a class="button contact" href="https://j47.in/" target="_blank" rel="noreferrer" aria-label="Open Jatin’s homepage for owner contact details">
+        <span class="button-inner">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/>
+          </svg>
+          <span class="button-title">Owner details &amp; contact</span>
+        </span>
+      </a>
+    </div>
+
+    <dl class="facts">
+      <div>
+        <dt>Breed</dt>
+        <dd>Golden Retriever mix</dd>
+      </div>
+      <div>
+        <dt>Identification</dt>
+        <dd>Microchipped</dd>
+      </div>
+    </dl>
+  </main>
+</body>
+</html>
