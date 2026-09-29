@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#f2eee6" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#171512" media="(prefers-color-scheme: dark)">
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="Kylo is a friendly dog. Please don’t chase him. Find his owner’s contact details at j47.in.">
+  <meta name="description" content="Kylo is a friendly 5-year-old Golden Retriever mixed from Mountain View, California. Please don’t chase him.">
   <link rel="icon" href="data:,">
   <title>You’ve found Kylo</title>
   <style>
@@ -397,6 +397,15 @@
       text-align: right;
     }
 
+    .fact-detail {
+      display: block;
+      margin-top: .1rem;
+      color: var(--soft-ink);
+      font-size: .78rem;
+      font-weight: 520;
+      letter-spacing: 0;
+    }
+
     .facts .microchip {
       padding: .2rem .45rem;
       border-radius: .4rem;
@@ -528,10 +537,26 @@
       </a>
     </div>
 
-    <dl class="facts">
+    <dl class="facts" aria-label="A few facts about Kylo">
+      <div>
+        <dt>Age</dt>
+        <dd><span id="kylo-age">5 years old</span><span class="fact-detail">Born January 16, 2021</span></dd>
+      </div>
+      <div>
+        <dt>Home</dt>
+        <dd>Mountain View, California</dd>
+      </div>
       <div>
         <dt>Breed</dt>
-        <dd>Golden Retriever mix</dd>
+        <dd>Golden Retriever mixed</dd>
+      </div>
+      <div>
+        <dt>Size</dt>
+        <dd>About 85 lb</dd>
+      </div>
+      <div>
+        <dt>Daily rhythm</dt>
+        <dd>Morning &amp; evening walks</dd>
       </div>
       <div>
         <dt>Identification</dt>
@@ -539,5 +564,16 @@
       </div>
     </dl>
   </main>
+  <script>
+    (function () {
+      var birthday = new Date(2021, 0, 16);
+      var today = new Date();
+      var age = today.getFullYear() - birthday.getFullYear();
+      var birthdayPassed = today.getMonth() > birthday.getMonth() ||
+        (today.getMonth() === birthday.getMonth() && today.getDate() >= birthday.getDate());
+      if (!birthdayPassed) age -= 1;
+      document.getElementById("kylo-age").textContent = age + (age === 1 ? " year old" : " years old");
+    }());
+  </script>
 </body>
 </html>
