@@ -87,6 +87,13 @@
     - Mentorship
     - Technical Writing
 
+- key: ai_ml
+  value:
+    - Agentic Interfaces (MCP, A2A, MCP Apps, A2UI, CLI)
+    - Large Language Models (Claude, GPT, Gemini, Llama)
+    - RAG, Embeddings & Semantic Search (pgvector)
+    - On-device Speech (whisper.cpp, Whisper, VOSK, ONNX)
+    - Model Serving (vLLM, ONNX Runtime)
 
 - key: languages
   value:
@@ -99,22 +106,6 @@
     - Swift
     - Rust
 
-- key: databases
-  value:
-    - MySQL/PostgreSQL/RDS
-    - MongoDB/DynamoDB
-    - Cassandra
-    - ElasticSearch/OpenSearch
-    - Redis/Memcached
-
-- key: ai_ml
-  value:
-    - Agentic Interfaces (MCP, A2A, MCP Apps, A2UI, CLI)
-    - Large Language Models (Claude, GPT, Gemini, Llama)
-    - RAG, Embeddings & Semantic Search (pgvector)
-    - On-device Speech (whisper.cpp, Whisper, VOSK, ONNX)
-    - Model Serving (vLLM, ONNX Runtime)
-
 - key: infrastructure
   value:
     - AWS/GCP/Azure
@@ -123,6 +114,14 @@
     - Prometheus/Grafana (Observability)
     - GitHub Actions/ArgoCD (CI/CD)
     - Istio/Linkerd (Service Mesh)
+
+- key: databases
+  value:
+    - MySQL/PostgreSQL/RDS
+    - MongoDB/DynamoDB
+    - Cassandra
+    - ElasticSearch/OpenSearch
+    - Redis/Memcached
 
 - key: messaging
   value:
@@ -136,25 +135,6 @@
     - x86/ARM
     - Raspberry Pi/Arduino/ESP32
     - GPU Programming (CUDA/OpenCL)
-
-- key: social
-  value:
-    - value: X
-      url: https://x.com/intent/user?screen_name=jatinkrmalik
-    - value: Email
-      url: "mailto:jatinkrmalik@gmail.com"
-    - value: GitHub
-      url: https://github.com/jatinkrmalik
-    - value: YouTube
-      url: https://youtube.com/@jatinkrmalik
-    - value: LinkedIn
-      url: https://linkedin.com/in/jatinkrmalik
-    - value: Medium
-      url: https://medium.com/@jatinkrmalik
-    - value: DEV
-      url: https://dev.to/jatinkrmalik
-    - value: Blog
-      url: https://jatinkrmalik.com
 
 - key: talks
   value:

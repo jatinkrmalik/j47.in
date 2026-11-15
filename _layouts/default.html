@@ -64,6 +64,7 @@
 <div class="crt-scanlines"></div>
 <div class="crt-scanline"></div>
 <div class="crt-flicker"></div>
+<div class="crt-texture"></div>
 
   <main>
 
@@ -72,10 +73,28 @@
   </main>
 
   <footer class="statusbar">
-    <span class="statusbar__host">j47.in</span>
-    <span class="statusbar__msg" role="status" aria-live="polite"></span>
-    <button type="button" data-action="help" aria-haspopup="dialog" aria-keyshortcuts="?">[?]<span class="statusbar__help-label"> help</span></button>
-    <button type="button" data-action="theme" aria-haspopup="listbox" aria-expanded="false" aria-controls="theme-menu" aria-keyshortcuts="t">theme: <span class="statusbar__theme-name">auto</span> &#9652;</button>
+    <div class="statusbar__line">
+      <span class="statusbar__host">j47.in</span>
+      <!-- Links, Norton Commander style: the letter is also the keyboard shortcut -->
+      <nav class="keybar" aria-label="Elsewhere">
+        {%- for link in site.data.social %}
+        <a href="{{ link.url }}" data-key="{{ link.key }}" aria-keyshortcuts="{{ link.key }}"{% unless link.url contains 'mailto:' %} rel="me noopener" target="_blank"{% endunless %}><kbd>{{ link.key }}</kbd><span>
+          {%- if link.icon -%}
+          <svg class="keybar__icon" viewBox="0 0 {{ link.icon[0] | size }} {{ link.icon | size }}" aria-hidden="true" focusable="false"><path d="
+            {%- for row in link.icon -%}
+              {%- assign y = forloop.index0 -%}
+              {%- assign pixels = row | split: "" -%}
+              {%- for p in pixels -%}{%- if p == "#" -%}M{{ forloop.index0 }} {{ y }}h1v1h-1z{%- endif -%}{%- endfor -%}
+            {%- endfor -%}
+          "/></svg>
+          {%- endif -%}
+          <span class="keybar__label">{{ link.label }}</span></span></a>
+        {%- endfor %}
+      </nav>
+      <span class="statusbar__msg" role="status" aria-live="polite"></span>
+      <button type="button" data-action="help" aria-haspopup="dialog" aria-keyshortcuts="?">[?]<span class="statusbar__help-label"> help</span></button>
+      <button type="button" data-action="theme" aria-haspopup="listbox" aria-expanded="false" aria-controls="theme-menu" aria-keyshortcuts="t"><span class="statusbar__theme-label">theme: </span><span class="statusbar__theme-name">auto</span> &#9652;</button>
+    </div>
     <div class="theme-menu" id="theme-menu" hidden>
       <p class="theme-menu__title">&#9508; select theme &#9500;</p>
       <div class="theme-menu__list" role="listbox" aria-label="Theme"></div>

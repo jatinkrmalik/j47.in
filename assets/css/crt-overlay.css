@@ -1,81 +1,118 @@
-/* 
- * CRT Scanline Effect
- * Inspired by mbrserver.com — full-screen overlay with multiple scanlines
+/*
+ * Display simulation
+ *
+ * Each theme is a different kind of screen, so each gets its own artefacts.
+ * themes.css sets the variables below per theme; this file only draws them.
+ *
+ *   monochrome CRT (green, amber, white)
+ *     dark gaps between the beam's scan lines, phosphor bloom, darker
+ *     corners, rounded tube corners, a slow refresh roll bar, faint flicker.
+ *     No colour mask: mono tubes had a single phosphor coating.
+ *   colour CRT (dos)
+ *     the same, plus an aperture grille of RGB stripes and slight
+ *     convergence error (red/blue fringes on text, set in --text-glow).
+ *   gas plasma (plasma)
+ *     flat, steady panel: a fine dark grid between the glowing cells.
+ *   reflective LCD (lcd)
+ *     flat, steady panel: a faint pixel grid and room-light glare.
+ *   printout (paper)
+ *     no screen at all: green-bar bands and tractor-feed holes that scroll
+ *     with the page.
  *
  * Layers (bottom to top):
- *   1. Content (z-index: auto)
- *   2. Static scanline pattern + RGB fringing (z-index: 9997)
- *   3. Moving scanline bar (z-index: 9998)
- *   4. Flicker overlay (z-index: 9999)
+ *   .crt-texture     paper texture, scrolls with the page          (z auto)
+ *   content
+ *   .crt-scanlines   scan lines / mask / grid, vignette, bezel     (9997)
+ *   .crt-scanline    refresh roll bar                              (9998)
+ *   .crt-flicker     brightness flicker                            (9999)
+ *
+ * The "s" shortcut (terminal-ui.js) hides all of them via .no-crt.
  */
 
-/* ===== STATIC MULTIPLE SCANLINES + RGB FRINGING ===== */
+/* ===== SCREEN SURFACE: scan lines, mask or pixel grid, plus vignette ===== */
 .crt-scanlines {
   position: fixed;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 9997;
-
-  /* Layer 1: Horizontal scanlines — alternating bright/dim */
-  /* Layer 2: Subtle RGB color fringing (like old CRT) */
-  background:
-    repeating-linear-gradient(
-      0deg,
-      transparent 0px,
-      transparent 1px,
-      var(--scanline-color, rgba(255, 255, 255, 0.04)) 1px,
-      var(--scanline-color, rgba(255, 255, 255, 0.04)) 2px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 0, 0, 0.03),
-      rgba(0, 255, 0, 0.01),
-      rgba(0, 0, 255, 0.03)
-    );
-
-  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+  background: var(--screen-surface, none);
 }
 
-/* ===== MOVING SCANLINE BAR ===== */
+/* Tube corners: a rounded "glass" edge, drawn by painting the bezel
+ * colour outside a rounded rectangle. Flat panels set the radius to 0. */
+.crt-scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--tube-radius, 0);
+  box-shadow:
+    0 0 0 3vmax var(--bezel-color, #000),
+    inset 0 0 4vmin var(--tube-edge, transparent);
+}
+
+/* ===== REFRESH ROLL BAR: a soft band drifting down the tube ===== */
 .crt-scanline {
+  display: var(--roll-bar, block);
   position: fixed;
-  pointer-events: none;
   top: 0;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 14vh;
   z-index: 9998;
-  background: var(--scanline-bar, rgba(255, 255, 255, 0.06));
-  opacity: 0.75;
-  animation: crt-scanline-move 7.77s linear infinite;
-}
-
-@keyframes crt-scanline-move {
-  0%   { top: -2px; }
-  100% { top: 100%; }
-}
-
-/* ===== SUBTLE FLICKER ===== */
-.crt-flicker {
-  position: fixed;
   pointer-events: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  background: rgba(9, 8, 8, 0.06);
-  animation: crt-flicker-anim 0.33s infinite;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--scanline-bar, rgba(255, 255, 255, 0.05)) 50%,
+    transparent
+  );
+  will-change: transform;
+  animation: crt-roll 9s linear infinite;
 }
 
-@keyframes crt-flicker-anim {
-  0%   { opacity: 0.10; }
-  20%  { opacity: 0.15; }
-  40%  { opacity: 0.05; }
-  60%  { opacity: 0.12; }
-  80%  { opacity: 0.08; }
-  100% { opacity: 0.10; }
+@keyframes crt-roll {
+  from { transform: translateY(-14vh); }
+  to   { transform: translateY(100vh); }
+}
+
+/* ===== FLICKER: tiny brightness wobble of a 60 Hz tube ===== */
+.crt-flicker {
+  display: var(--flicker, block);
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: #000;
+  opacity: 0;
+  animation: crt-flicker 0.12s steps(1) infinite;
+}
+
+@keyframes crt-flicker {
+  0%   { opacity: 0.015; }
+  25%  { opacity: 0.035; }
+  50%  { opacity: 0.01; }
+  75%  { opacity: 0.03; }
+}
+
+/* ===== PRINTOUT TEXTURE: scrolls with the page, sits behind the text ===== */
+.crt-texture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--page-holes, none), var(--page-bands, none);
+}
+
+@media (max-width: 600px) {
+  /* no room for tractor-feed holes in a phone's margin */
+  .crt-texture {
+    background: var(--page-bands, none);
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  .crt-scanline,
+  .crt-flicker {
+    display: none;
+  }
 }
