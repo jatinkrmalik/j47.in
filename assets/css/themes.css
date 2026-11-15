@@ -6,15 +6,80 @@
  * The picker in the status line (assets/js/terminal-ui.js) sets data-theme and
  * remembers the choice in localStorage. Keep the theme list there in sync.
  *
- *   --bg-color       screen background
- *   --punct-color    braces, quotes, commas, chrome
- *   --keyval-color   keys and values
- *   --hover-color    hovered links
- *   --text-glow      phosphor bloom around text
- *   --scanline-color static scanline tint
- *   --scanline-bar   moving scanline bar
- *   --term-font      the machine's own text-mode font (terminal-fonts.css)
+ * Colours and type
+ *   --bg-color        screen background
+ *   --punct-color     braces, quotes, commas, chrome
+ *   --keyval-color    keys and values
+ *   --hover-color     hovered links
+ *   --text-glow       phosphor bloom (or LCD shadow, or ink bleed) around text
+ *   --term-font       the machine's own text-mode font (terminal-fonts.css)
+ *
+ * Display hardware (drawn by crt-overlay.css)
+ *   --screen-surface  scan lines / colour mask / pixel grid / glare, over the page
+ *   --tube-radius     rounded glass corners (0 for flat panels and paper)
+ *   --tube-edge       darkening just inside the glass edge
+ *   --roll-bar        refresh roll bar: block | none
+ *   --scanline-bar    roll bar tint
+ *   --flicker         60 Hz flicker: block | none
+ *   --page-bands      printout bands behind the text, scroll with the page
+ *   --page-holes      tractor-feed holes in the margins
  */
+
+/* ===== Display profiles, shared by the themes below ===== */
+:root {
+  /* Monochrome CRT: dark gaps between scan lines (3px pitch, soft beam
+   * profile), and corners that fall off like a curved tube. No colour mask. */
+  --surface-mono-crt:
+    repeating-linear-gradient(180deg,
+      transparent 0, transparent 1px,
+      rgba(0, 0, 0, 0.5) 2px, transparent 3px),
+    radial-gradient(ellipse 120% 100% at 50% 50%,
+      transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+
+  /* Colour CRT: lighter scan lines plus an aperture grille of RGB stripes. */
+  --surface-colour-crt:
+    repeating-linear-gradient(180deg,
+      transparent 0, transparent 1px,
+      rgba(0, 0, 0, 0.35) 2px, transparent 3px),
+    repeating-linear-gradient(90deg,
+      rgba(255, 0, 0, 0.08) 0 1px,
+      rgba(0, 255, 0, 0.08) 1px 2px,
+      rgba(0, 90, 255, 0.08) 2px 3px),
+    radial-gradient(ellipse 120% 100% at 50% 50%,
+      transparent 55%, rgba(0, 0, 0, 0.45) 100%);
+
+  /* Gas plasma: square glowing cells with dark gaps, flat and even. */
+  --surface-plasma:
+    repeating-linear-gradient(180deg, transparent 0 2px, rgba(0, 0, 0, 0.4) 2px 3px),
+    repeating-linear-gradient(90deg, transparent 0 2px, rgba(0, 0, 0, 0.4) 2px 3px);
+
+  /* Reflective LCD: faint pixel grid and glare from the room light. */
+  --surface-lcd:
+    repeating-linear-gradient(180deg, transparent 0 2px, rgba(0, 0, 0, 0.05) 2px 3px),
+    repeating-linear-gradient(90deg, transparent 0 2px, rgba(0, 0, 0, 0.05) 2px 3px),
+    linear-gradient(155deg,
+      rgba(255, 255, 255, 0.2), transparent 35%,
+      transparent 70%, rgba(0, 0, 0, 0.08));
+
+  /* Green-bar line-printer paper: bands three lines deep, feed holes. */
+  --paper-bands: repeating-linear-gradient(180deg,
+    rgba(110, 165, 110, 0.14) 0 3em, transparent 3em 6em);
+  --paper-holes:
+    radial-gradient(circle, rgba(0, 0, 0, 0.14) 0 0.3em, transparent 0.34em)
+      left 0.3em top 0 / 1.5em 1.5em repeat-y,
+    radial-gradient(circle, rgba(0, 0, 0, 0.14) 0 0.3em, transparent 0.34em)
+      right 0.3em top 0 / 1.5em 1.5em repeat-y;
+
+  /* Defaults: a monochrome CRT */
+  --screen-surface: var(--surface-mono-crt);
+  --tube-radius: 2.2vmin;
+  --tube-edge: rgba(0, 0, 0, 0.6);
+  --bezel-color: #000;
+  --roll-bar: block;
+  --flicker: block;
+  --page-bands: none;
+  --page-holes: none;
+}
 
 /* ===== 1. green: P1 phosphor, IBM 5151 (default / auto-dark) ===== */
 :root,
@@ -25,9 +90,8 @@
   --punct-color: #00ff41;
   --keyval-color: #00cc36;
   --hover-color: #39ff14;
-  --text-glow: 0 0 5px currentColor;
-  --scanline-color: rgba(255, 255, 255, 0.04);
-  --scanline-bar: rgba(255, 255, 255, 0.06);
+  --text-glow: 0 0 1px currentColor, 0 0 7px color-mix(in srgb, currentColor 55%, transparent);
+  --scanline-bar: rgba(120, 255, 150, 0.05);
 }
 
 /* ===== 7. paper: line-printer paper (auto-light) ===== */
@@ -40,8 +104,13 @@
     --keyval-color: #1d1b17;
     --hover-color: #b0301c;
     --text-glow: 0 0 0.6px currentColor;
-    --scanline-color: rgba(0, 0, 0, 0.03);
-    --scanline-bar: rgba(0, 0, 0, 0.04);
+    --screen-surface: none;
+    --tube-radius: 0;
+    --tube-edge: transparent;
+    --roll-bar: none;
+    --flicker: none;
+    --page-bands: var(--paper-bands);
+    --page-holes: var(--paper-holes);
   }
 }
 
@@ -53,8 +122,13 @@
   --keyval-color: #1d1b17;
   --hover-color: #b0301c;
   --text-glow: 0 0 0.6px currentColor;
-  --scanline-color: rgba(0, 0, 0, 0.03);
-  --scanline-bar: rgba(0, 0, 0, 0.04);
+  --screen-surface: none;
+  --tube-radius: 0;
+  --tube-edge: transparent;
+  --roll-bar: none;
+  --flicker: none;
+  --page-bands: var(--paper-bands);
+  --page-holes: var(--paper-holes);
 }
 
 /* ===== 2. amber: P3 phosphor amber monitors ===== */
@@ -65,9 +139,8 @@
   --punct-color: #ffb000;
   --keyval-color: #ff9800;
   --hover-color: #ffcc00;
-  --text-glow: 0 0 5px currentColor;
-  --scanline-color: rgba(255, 255, 255, 0.04);
-  --scanline-bar: rgba(255, 255, 255, 0.06);
+  --text-glow: 0 0 1px currentColor, 0 0 7px color-mix(in srgb, currentColor 55%, transparent);
+  --scanline-bar: rgba(255, 190, 90, 0.05);
 }
 
 /* ===== 3. white: P4 phosphor, DEC VT100 ===== */
@@ -78,12 +151,11 @@
   --punct-color: #e8f1ff;
   --keyval-color: #c4d4ea;
   --hover-color: #ffffff;
-  --text-glow: 0 0 5px rgba(200, 220, 255, 0.6);
-  --scanline-color: rgba(255, 255, 255, 0.035);
-  --scanline-bar: rgba(255, 255, 255, 0.05);
+  --text-glow: 0 0 1px currentColor, 0 0 6px rgba(200, 220, 255, 0.45);
+  --scanline-bar: rgba(220, 235, 255, 0.045);
 }
 
-/* ===== 4. plasma: orange gas-plasma portables ===== */
+/* ===== 4. plasma: gas plasma, Compaq Portable III ===== */
 :root[data-theme="plasma"] {
   color-scheme: dark;
   --term-font: 'Compaq Portable', 'IBM VGA', monospace;
@@ -91,12 +163,15 @@
   --punct-color: #ff6a2b;
   --keyval-color: #ff4f12;
   --hover-color: #ff9a5c;
-  --text-glow: 0 0 6px currentColor;
-  --scanline-color: rgba(255, 120, 60, 0.04);
-  --scanline-bar: rgba(255, 120, 60, 0.06);
+  --text-glow: 0 0 4px color-mix(in srgb, currentColor 60%, transparent);
+  --screen-surface: var(--surface-plasma);
+  --tube-radius: 0;
+  --tube-edge: transparent;
+  --roll-bar: none;
+  --flicker: none;
 }
 
-/* ===== 5. dos: VGA 16-colour text mode, blue screen editors ===== */
+/* ===== 5. dos: VGA 16-colour text mode on a colour CRT ===== */
 :root[data-theme="dos"] {
   color-scheme: dark;
   --term-font: 'IBM VGA', monospace;
@@ -104,12 +179,16 @@
   --punct-color: #aaaaaa;
   --keyval-color: #ffff55;
   --hover-color: #55ffff;
-  --text-glow: 0 0 2px currentColor;
-  --scanline-color: rgba(0, 0, 0, 0.12);
-  --scanline-bar: rgba(255, 255, 255, 0.05);
+  /* convergence error: red and blue guns land a hair apart */
+  --text-glow:
+    -0.6px 0 rgba(255, 60, 60, 0.45),
+    0.6px 0 rgba(80, 160, 255, 0.45),
+    0 0 3px color-mix(in srgb, currentColor 45%, transparent);
+  --screen-surface: var(--surface-colour-crt);
+  --scanline-bar: rgba(255, 255, 255, 0.04);
 }
 
-/* ===== 6. lcd: reflective LCD, TRS-80 Model 100 ===== */
+/* ===== 6. lcd: reflective LCD, IBM PC Convertible ===== */
 :root[data-theme="lcd"] {
   color-scheme: light;
   --term-font: 'IBM Convertible', 'IBM VGA', monospace;
@@ -117,9 +196,13 @@
   --punct-color: #4a5636;
   --keyval-color: #1f2a17;
   --hover-color: #000000;
+  /* the liquid crystal casts a shadow on the reflector behind it */
   --text-glow: 1px 1px 0 rgba(0, 0, 0, 0.14);
-  --scanline-color: rgba(0, 0, 0, 0.035);
-  --scanline-bar: rgba(0, 0, 0, 0.04);
+  --screen-surface: var(--surface-lcd);
+  --tube-radius: 0;
+  --tube-edge: transparent;
+  --roll-bar: none;
+  --flicker: none;
 }
 
 html {

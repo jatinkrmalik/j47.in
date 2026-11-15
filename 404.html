@@ -82,6 +82,7 @@
 <div class="crt-scanlines"></div>
 <div class="crt-scanline"></div>
 <div class="crt-flicker"></div>
+<div class="crt-texture"></div>
 
   <main>
 
@@ -110,10 +111,20 @@
   </main>
 
   <footer class="statusbar">
-    <span class="statusbar__host">j47.in</span>
-    <span class="statusbar__msg" role="status" aria-live="polite"></span>
-    <button type="button" data-action="help" aria-haspopup="dialog" aria-keyshortcuts="?">[?]<span class="statusbar__help-label"> help</span></button>
-    <button type="button" data-action="theme" aria-haspopup="listbox" aria-expanded="false" aria-controls="theme-menu" aria-keyshortcuts="t">theme: <span class="statusbar__theme-name">auto</span> &#9652;</button>
+    <div class="statusbar__line">
+      <span class="statusbar__host">j47.in</span>
+      <!-- Links, Norton Commander style: the letter is also the keyboard shortcut -->
+      <nav class="keybar" aria-label="Elsewhere">
+        <a href="https://jatinkrmalik.com" data-key="b" aria-keyshortcuts="b" rel="me noopener" target="_blank"><kbd>b</kbd><span><svg class="keybar__icon" viewBox="0 0 9 9" aria-hidden="true" focusable="false"><path d="M7 0h1v1h-1zM6 1h1v1h-1zM7 1h1v1h-1zM8 1h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM4 3h1v1h-1zM5 3h1v1h-1zM6 3h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM2 5h1v1h-1zM3 5h1v1h-1zM4 5h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM1 7h1v1h-1zM2 7h1v1h-1zM0 8h1v1h-1z"/></svg><span class="keybar__label">Blog</span></span></a>
+        <a href="https://github.com/jatinkrmalik" data-key="g" aria-keyshortcuts="g" rel="me noopener" target="_blank"><kbd>g</kbd><span><svg class="keybar__icon" viewBox="0 0 9 9" aria-hidden="true" focusable="false"><path d="M1 0h1v1h-1zM7 0h1v1h-1zM1 1h1v1h-1zM2 1h1v1h-1zM6 1h1v1h-1zM7 1h1v1h-1zM1 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM0 3h1v1h-1zM1 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM5 3h1v1h-1zM6 3h1v1h-1zM7 3h1v1h-1zM8 3h1v1h-1zM0 4h1v1h-1zM1 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM7 4h1v1h-1zM8 4h1v1h-1zM0 5h1v1h-1zM1 5h1v1h-1zM2 5h1v1h-1zM3 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM7 5h1v1h-1zM8 5h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM7 6h1v1h-1zM2 7h1v1h-1zM6 7h1v1h-1zM2 8h1v1h-1zM6 8h1v1h-1z"/></svg><span class="keybar__label">GitHub</span></span></a>
+        <a href="https://linkedin.com/in/jatinkrmalik" data-key="l" aria-keyshortcuts="l" rel="me noopener" target="_blank"><kbd>l</kbd><span><svg class="keybar__icon" viewBox="0 0 9 9" aria-hidden="true" focusable="false"><path d="M1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM7 0h1v1h-1zM0 1h1v1h-1zM2 1h1v1h-1zM3 1h1v1h-1zM4 1h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM7 1h1v1h-1zM8 1h1v1h-1zM0 2h1v1h-1zM1 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM8 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM6 3h1v1h-1zM7 3h1v1h-1zM8 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM7 4h1v1h-1zM8 4h1v1h-1zM0 5h1v1h-1zM2 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM7 5h1v1h-1zM8 5h1v1h-1zM0 6h1v1h-1zM2 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM0 7h1v1h-1zM2 7h1v1h-1zM4 7h1v1h-1zM5 7h1v1h-1zM7 7h1v1h-1zM8 7h1v1h-1zM1 8h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1z"/></svg><span class="keybar__label">LinkedIn</span></span></a>
+        <a href="https://x.com/jatinkrmalik" data-key="x" aria-keyshortcuts="x" rel="me noopener" target="_blank"><kbd>x</kbd><span><svg class="keybar__icon" viewBox="0 0 9 9" aria-hidden="true" focusable="false"><path d="M0 0h1v1h-1zM1 0h1v1h-1zM8 0h1v1h-1zM1 1h1v1h-1zM2 1h1v1h-1zM7 1h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM6 2h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM5 3h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM3 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM2 6h1v1h-1zM6 6h1v1h-1zM7 6h1v1h-1zM1 7h1v1h-1zM7 7h1v1h-1zM8 7h1v1h-1zM0 8h1v1h-1zM8 8h1v1h-1z"/></svg><span class="keybar__label">X</span></span></a>
+        <a href="https://youtube.com/@jatinkrmalik" data-key="y" aria-keyshortcuts="y" rel="me noopener" target="_blank"><kbd>y</kbd><span><svg class="keybar__icon" viewBox="0 0 11 9" aria-hidden="true" focusable="false"><path d="M1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM7 0h1v1h-1zM8 0h1v1h-1zM9 0h1v1h-1zM0 1h1v1h-1zM1 1h1v1h-1zM2 1h1v1h-1zM3 1h1v1h-1zM4 1h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM7 1h1v1h-1zM8 1h1v1h-1zM9 1h1v1h-1zM10 1h1v1h-1zM0 2h1v1h-1zM1 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM8 2h1v1h-1zM9 2h1v1h-1zM10 2h1v1h-1zM0 3h1v1h-1zM1 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM6 3h1v1h-1zM7 3h1v1h-1zM8 3h1v1h-1zM9 3h1v1h-1zM10 3h1v1h-1zM0 4h1v1h-1zM1 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM7 4h1v1h-1zM8 4h1v1h-1zM9 4h1v1h-1zM10 4h1v1h-1zM0 5h1v1h-1zM1 5h1v1h-1zM2 5h1v1h-1zM3 5h1v1h-1zM6 5h1v1h-1zM7 5h1v1h-1zM8 5h1v1h-1zM9 5h1v1h-1zM10 5h1v1h-1zM0 6h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM9 6h1v1h-1zM10 6h1v1h-1zM0 7h1v1h-1zM1 7h1v1h-1zM2 7h1v1h-1zM3 7h1v1h-1zM4 7h1v1h-1zM5 7h1v1h-1zM6 7h1v1h-1zM7 7h1v1h-1zM8 7h1v1h-1zM9 7h1v1h-1zM10 7h1v1h-1zM1 8h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM9 8h1v1h-1z"/></svg><span class="keybar__label">YouTube</span></span></a>
+      </nav>
+      <span class="statusbar__msg" role="status" aria-live="polite"></span>
+      <button type="button" data-action="help" aria-haspopup="dialog" aria-keyshortcuts="?">[?]<span class="statusbar__help-label"> help</span></button>
+      <button type="button" data-action="theme" aria-haspopup="listbox" aria-expanded="false" aria-controls="theme-menu" aria-keyshortcuts="t"><span class="statusbar__theme-label">theme: </span><span class="statusbar__theme-name">auto</span> &#9652;</button>
+    </div>
     <div class="theme-menu" id="theme-menu" hidden>
       <p class="theme-menu__title">&#9508; select theme &#9500;</p>
       <div class="theme-menu__list" role="listbox" aria-label="Theme"></div>

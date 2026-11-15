@@ -1,11 +1,13 @@
 /*
- * Terminal UI: tmux-style status line, theme picker menu, shortcuts help dialog.
+ * Terminal UI: tmux-style status line, Norton Commander-style key bar of
+ * links, theme picker menu, shortcuts help dialog.
  * Behaviour lives in assets/js/terminal-ui.js.
  */
 
-/* Leave room for the fixed status line */
+/* Leave room for the fixed footer. terminal-ui.js keeps this in step with
+ * the footer's real height (the key bar wraps to two rows on phones). */
 body {
-  padding-bottom: 3em;
+  padding-bottom: var(--statusbar-height, 5em);
 }
 
 /* Buttons inside the terminal chrome look like text */
@@ -40,10 +42,6 @@ body {
   right: 0;
   bottom: 0;
   z-index: 9996; /* under the scanlines so they run across it too */
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  padding: 0.2em 0.6em;
   font-family: var(--term-font, 'IBM VGA', monospace);
   font-size: 16px;
   line-height: 1.5;
@@ -51,6 +49,82 @@ body {
   color: var(--punct-color);
   background: var(--bg-color);
   border-top: 1px solid var(--punct-color);
+}
+
+.statusbar__line {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.2em 0.6em;
+  overflow: hidden; /* one row, always: see ONE-ROW FIT below */
+}
+
+.statusbar__line > * {
+  flex: none;
+}
+
+/* ===== LINKS: Norton Commander key-bar style, inside the status line.
+ * The key sits on the screen colour, the logo and label on an inverse
+ * block. Narrower screens drop the labels, then the keys (see below). ===== */
+.keybar {
+  display: flex;
+  align-items: center;
+  gap: 1ch;
+  flex: none;
+}
+
+.keybar a {
+  display: flex !important;
+  align-items: center;
+  gap: 0.5ch;
+  color: inherit;
+  text-decoration: none;
+  text-shadow: inherit;
+}
+
+.keybar kbd {
+  font: inherit;
+  color: var(--keyval-color);
+}
+
+.keybar a > span {
+  display: flex;
+  align-items: center;
+  gap: 0.6ch;
+  padding: 0 0.5ch;
+  background: var(--punct-color);
+  color: var(--bg-color);
+  text-shadow: none;
+}
+
+
+/* Pixel-art logo, filled in the label's colour. 18px = exactly 2px per
+ * logo pixel (logos are 9 rows), so every pixel comes out the same size. */
+.keybar__icon {
+  flex: none;
+  height: 18px;
+  width: auto;
+  fill: currentColor;
+  shape-rendering: crispEdges;
+}
+
+.keybar a:hover > span,
+.keybar a:focus-visible > span {
+  background: var(--hover-color);
+}
+
+.keybar a:focus-visible {
+  outline: none;
+}
+
+.keybar a:focus-visible kbd {
+  background: var(--keyval-color);
+  color: var(--bg-color);
+}
+
+/* no link-hover shimmer from custom-styles.css inside the chrome */
+.keybar a:hover::after {
+  content: none;
 }
 
 .statusbar__host {
@@ -61,7 +135,8 @@ body {
 }
 
 .statusbar__msg {
-  flex: 1;
+  flex: 1 1 0 !important;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--keyval-color);
@@ -198,10 +273,11 @@ body {
   opacity: 0.7;
 }
 
-/* ===== CRT EFFECTS OFF (s) ===== */
+/* ===== SCREEN EFFECTS OFF (s) ===== */
 .no-crt .crt-scanlines,
 .no-crt .crt-scanline,
-.no-crt .crt-flicker {
+.no-crt .crt-flicker,
+.no-crt .crt-texture {
   display: none;
 }
 
@@ -211,19 +287,56 @@ body {
     font-size: 14px;
   }
 
-  .statusbar__msg {
-    display: none;
-  }
-
-  .statusbar__help-label {
-    display: none;
-  }
-
   .theme-menu__option {
     grid-template-columns: 1.5ch 2ch auto;
   }
 
   .theme-menu__desc {
+    display: none;
+  }
+}
+
+/* ===== ONE-ROW FIT =====
+ * The status line never wraps. terminal-ui.js measures it (widths depend on
+ * the theme's font) and sets data-fit to the first level that fits:
+ *   0  everything
+ *   1  links drop their labels (logo + key)
+ *   2  links drop their keys, help and theme drop their words, no message
+ *   3  the j47.in tag goes too
+ * The media query is the no-JS fallback for phones. */
+.statusbar[data-fit="1"] .keybar__label,
+.statusbar[data-fit="2"] .keybar__label,
+.statusbar[data-fit="3"] .keybar__label {
+  /* visually hidden, still read out by screen readers */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.statusbar[data-fit="2"] :is(.keybar kbd, .statusbar__help-label, .statusbar__theme-label, .statusbar__theme-auto, .statusbar__msg),
+.statusbar[data-fit="3"] :is(.keybar kbd, .statusbar__help-label, .statusbar__theme-label, .statusbar__theme-auto, .statusbar__msg, .statusbar__host) {
+  display: none;
+}
+
+.statusbar:is([data-fit="2"], [data-fit="3"]) .statusbar__line {
+  gap: 0.4em;
+}
+
+.statusbar:is([data-fit="2"], [data-fit="3"]) .keybar {
+  gap: 0.5ch;
+  /* with no message, push help and theme to the right */
+  margin-right: auto;
+}
+
+.statusbar:is([data-fit="2"], [data-fit="3"]) button {
+  padding: 0 0.3em;
+}
+
+@media (max-width: 480px) {
+  .statusbar:not([data-fit]) :is(.keybar kbd, .keybar__label) {
     display: none;
   }
 }
