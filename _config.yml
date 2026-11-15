@@ -31,17 +31,31 @@ github_username:  jatinkrmalik
 author:
   name: Jatin K Malik
   url: https://jatinkrmalik.com
+  twitter: jatinkrmalik
 
 # SEO
 logo: /assets/logo.svg
-og_image: https://j47.in/assets/og-image.svg
 social:
   name: Jatin K Malik
   links:
     - https://jatinkrmalik.com
-    - https://twitter.com/jatinkrmalik
-    - https://linkedin.com/in/jatinkrmalik
     - https://github.com/jatinkrmalik
+    - https://linkedin.com/in/jatinkrmalik
+    - https://x.com/jatinkrmalik
+    - https://youtube.com/@jatinkrmalik
+
+# Link-preview image for every page (jekyll-seo-tag). It's a PNG because
+# X, LinkedIn, Slack, WhatsApp and others don't show SVG previews.
+# Regenerate with: sh _og/render.sh
+defaults:
+  - scope:
+      path: ""
+    values:
+      image:
+        path: /assets/og-image.png
+        width: 1200
+        height: 630
+        alt: "Jatin K Malik, Principal Engineer at Atlassian, in green text on a retro CRT terminal"
 
 # Build settings
 remote_theme: piazzai/hacked-jekyll

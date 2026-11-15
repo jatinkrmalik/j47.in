@@ -1,0 +1,184 @@
+<!doctype html>
+<!--
+  Open Graph image for j47.in: a still of the site on a green phosphor CRT.
+  Rendered to assets/og-image.png (1200x630) by _og/render.sh.
+  Folders starting with "_" are not published by Jekyll, so this file only
+  exists to be screenshotted. Edit the text below, then rerun render.sh.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>j47.in og image</title>
+<style>
+  @font-face {
+    font-family: 'IBM MDA';
+    src: url('../assets/fonts/WebPlus_IBM_MDA.woff') format('woff');
+  }
+
+  :root {
+    --bg: #000;
+    --punct: #00ff41;
+    --keyval: #00cc36;
+    --glow: 0 0 2px currentColor, 0 0 12px rgba(0, 255, 65, 0.45);
+  }
+
+  * { box-sizing: border-box; margin: 0; }
+
+  html, body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  body {
+    position: relative;
+    font-family: 'IBM MDA', monospace;
+    color: var(--punct);
+    text-shadow: var(--glow);
+    -webkit-font-smoothing: none;
+    font-synthesis: none;
+  }
+
+  /* ---------- screen content ---------- */
+  .screen {
+    position: absolute;
+    inset: 0 0 64px;
+    padding: 66px 84px 0;
+  }
+
+  .name {
+    font-size: 84px;          /* 6x the MDA 14px cell */
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 3px currentColor, 0 0 24px rgba(0, 255, 65, 0.55);
+  }
+
+  .role {
+    margin-top: 18px;
+    font-size: 35px;          /* 2.5x */
+    color: var(--keyval);
+  }
+
+  .json {
+    margin-top: 52px;
+    font-family: inherit;     /* <pre> would otherwise use the default monospace */
+    font-size: 28px;          /* 2x */
+    line-height: 50px;
+    white-space: pre;
+  }
+
+  .k, .v { color: var(--keyval); }
+
+  .cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 0.95em;
+    margin-left: 4px;
+    vertical-align: -0.12em;
+    background: var(--punct);
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
+  }
+
+  /* ---------- status line, as on the site ---------- */
+  .statusbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 0 56px 6px;
+    font-size: 24px;
+    white-space: nowrap;
+    border-top: 2px solid var(--punct);
+  }
+
+  .host {
+    padding: 0 10px;
+    background: var(--punct);
+    color: var(--bg);
+    text-shadow: none;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .link kbd {
+    font: inherit;
+    color: var(--keyval);
+  }
+
+  .link span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 8px;
+    background: var(--punct);
+    color: var(--bg);
+    text-shadow: none;
+  }
+
+  .link svg {
+    height: 18px;             /* 2px per logo pixel */
+    fill: currentColor;
+    shape-rendering: crispEdges;
+  }
+
+  .spacer { flex: 1; }
+
+  /* ---------- the glass: scan lines, vignette, glare, tube corners ---------- */
+  .glass {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(180deg,
+        transparent 0, transparent 2px,
+        rgba(0, 0, 0, 0.42) 3px, transparent 4px),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 38%),
+      radial-gradient(ellipse 115% 105% at 50% 50%,
+        transparent 58%, rgba(0, 0, 0, 0.62) 100%);
+  }
+
+  .glass::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 34px;
+    box-shadow:
+      0 0 0 60px #050505,
+      inset 0 0 50px rgba(0, 0, 0, 0.75);
+  }
+</style>
+</head>
+<body>
+  <main class="screen">
+    <h1 class="name">Jatin K Malik</h1>
+    <p class="role">Principal Engineer @ Atlassian</p>
+<pre class="json">{
+  "<span class="k">building</span>": "<span class="v">agentic interfaces · MCP · A2A · CLI</span>",
+  "<span class="k">scaled</span>": "<span class="v">Uber · Synaptic · Shuttl · Adobe</span>",
+  "<span class="k">open_source</span>": "<span class="v">Vocalinux · VocaMac · LLMFeeder</span>"
+}<span class="cursor"></span></pre>
+  </main>
+
+  <footer class="statusbar">
+    <span class="host">j47.in</span>
+    <span class="link"><kbd>b</kbd><span><svg viewBox="0 0 9 9"><path d="M7 0h1v1h-1zM6 1h3v1h-3zM5 2h3v1h-3zM4 3h3v1h-3zM3 4h3v1h-3zM2 5h3v1h-3zM1 6h3v1h-3zM1 7h2v1h-2zM0 8h1v1h-1z"/></svg>Blog</span></span>
+    <span class="link"><kbd>g</kbd><span><svg viewBox="0 0 9 9"><path d="M1 0h1v1h-1zM7 0h1v1h-1zM1 1h2v1h-2zM6 1h2v1h-2zM1 2h7v1h-7zM0 3h9v1h-9zM0 4h2v1h-2zM3 4h3v1h-3zM7 4h2v1h-2zM0 5h9v1h-9zM1 6h7v1h-7zM2 7h1v1h-1zM6 7h1v1h-1zM2 8h1v1h-1zM6 8h1v1h-1z"/></svg>GitHub</span></span>
+    <span class="link"><kbd>l</kbd><span><svg viewBox="0 0 9 9"><path d="M1 0h7v1h-7zM0 1h1v1h-1zM2 1h7v1h-7zM0 2h9v1h-9zM0 3h1v1h-1zM2 3h1v1h-1zM6 3h3v1h-3zM0 4h1v1h-1zM2 4h1v1h-1zM4 4h2v1h-2zM7 4h2v1h-2zM0 5h1v1h-1zM2 5h1v1h-1zM4 5h2v1h-2zM7 5h2v1h-2zM0 6h1v1h-1zM2 6h1v1h-1zM4 6h2v1h-2zM7 6h2v1h-2zM0 7h1v1h-1zM2 7h1v1h-1zM4 7h2v1h-2zM7 7h2v1h-2zM1 8h7v1h-7z"/></svg>LinkedIn</span></span>
+    <span class="link"><kbd>x</kbd><span><svg viewBox="0 0 9 9"><path d="M0 0h2v1h-2zM8 0h1v1h-1zM1 1h2v1h-2zM7 1h1v1h-1zM2 2h2v1h-2zM6 2h1v1h-1zM3 3h3v1h-3zM4 4h2v1h-2zM3 5h1v1h-1zM5 5h2v1h-2zM2 6h1v1h-1zM6 6h2v1h-2zM1 7h1v1h-1zM7 7h2v1h-2zM0 8h1v1h-1zM8 8h1v1h-1z"/></svg>X</span></span>
+    <span class="link"><kbd>y</kbd><span><svg viewBox="0 0 11 9"><path d="M1 0h9v1h-9zM0 1h11v1h-11zM0 2h4v1h-4zM5 2h6v1h-6zM0 3h4v1h-4zM6 3h5v1h-5zM0 4h4v1h-4zM7 4h4v1h-4zM0 5h4v1h-4zM6 5h5v1h-5zM0 6h4v1h-4zM5 6h6v1h-6zM0 7h11v1h-11zM1 8h9v1h-9z"/></svg>YouTube</span></span>
+    <span class="spacer"></span>
+    <span>[?] help</span>
+  </footer>
+
+  <div class="glass" aria-hidden="true"></div>
+</body>
+</html>
