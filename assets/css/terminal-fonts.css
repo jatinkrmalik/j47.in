@@ -1,3 +1,63 @@
+/* Period-correct bitmap fonts, one per theme (themes.css sets --term-font).
+ * From "The Ultimate Oldschool PC Font Pack" by VileR, https://int10h.org/oldschool-pc-fonts/
+ * Licensed CC BY-SA 4.0 - see assets/fonts/LICENSE-oldschool-pc-fonts.txt
+ * Browsers only download the face the active theme actually uses. */
+
+/* IBM VGA 8x16 - DOS text mode (dos theme, and the fallback for every theme) */
+@font-face {
+  font-family: 'IBM VGA';
+  src: url('../fonts/WebPlus_IBM_VGA_8x16.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* IBM MDA 9x14 - Monochrome Display Adapter, drawn on the IBM 5151 (green) */
+@font-face {
+  font-family: 'IBM MDA';
+  src: url('../fonts/WebPlus_IBM_MDA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* IBM EGA 8x14 - EGA-era clones on amber monitors (amber) */
+@font-face {
+  font-family: 'IBM EGA';
+  src: url('../fonts/WebPlus_IBM_EGA_8x14.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* DEC Rainbow 100 - DEC's VT100-family terminal font (white) */
+@font-face {
+  font-family: 'DEC Rainbow';
+  src: url('../fonts/WebPlus_Rainbow100_re_80.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Compaq Portable III - the orange gas-plasma luggable (plasma) */
+@font-face {
+  font-family: 'Compaq Portable';
+  src: url('../fonts/Web437_Compaq_Port3.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* IBM PC Convertible - IBM's first LCD laptop (lcd). The -2y cut doubles
+ * the 8x8 cell's height, matching the tall pixels of its 640x200 panel. */
+@font-face {
+  font-family: 'IBM Convertible';
+  src: url('../fonts/Web437_IBM_Conv-2y.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* VT323 - Perfect pixel font that resembles classic terminal displays */
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
@@ -11,6 +71,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
 /* Font class selectors for easy toggling */
+.font-vga {
+  font-family: 'IBM VGA', monospace;
+  font-size: 1em;
+  line-height: 1.25;
+}
+
 .font-vt323 {
   font-family: 'VT323', monospace;
   font-size: 1.2em; /* Slightly larger because this font is smaller */
