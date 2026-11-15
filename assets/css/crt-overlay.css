@@ -26,8 +26,8 @@
       0deg,
       transparent 0px,
       transparent 1px,
-      rgba(255, 255, 255, 0.04) 1px,
-      rgba(255, 255, 255, 0.04) 2px
+      var(--scanline-color, rgba(255, 255, 255, 0.04)) 1px,
+      var(--scanline-color, rgba(255, 255, 255, 0.04)) 2px
     ),
     linear-gradient(
       90deg,
@@ -48,7 +48,7 @@
   width: 100%;
   height: 2px;
   z-index: 9998;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--scanline-bar, rgba(255, 255, 255, 0.06));
   opacity: 0.75;
   animation: crt-scanline-move 7.77s linear infinite;
 }

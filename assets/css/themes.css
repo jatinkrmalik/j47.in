@@ -1,0 +1,127 @@
+/*
+ * Retro terminal themes
+ *
+ * Each theme is a set of CSS variables, selected with <html data-theme="...">.
+ * With no data-theme ("auto"), the OS setting picks green (dark) or paper (light).
+ * The picker in the status line (assets/js/terminal-ui.js) sets data-theme and
+ * remembers the choice in localStorage. Keep the theme list there in sync.
+ *
+ *   --bg-color       screen background
+ *   --punct-color    braces, quotes, commas, chrome
+ *   --keyval-color   keys and values
+ *   --hover-color    hovered links
+ *   --text-glow      phosphor bloom around text
+ *   --scanline-color static scanline tint
+ *   --scanline-bar   moving scanline bar
+ *   --term-font      the machine's own text-mode font (terminal-fonts.css)
+ */
+
+/* ===== 1. green: P1 phosphor, IBM 5151 (default / auto-dark) ===== */
+:root,
+:root[data-theme="green"] {
+  color-scheme: dark;
+  --term-font: 'IBM MDA', 'IBM VGA', monospace;
+  --bg-color: #000000;
+  --punct-color: #00ff41;
+  --keyval-color: #00cc36;
+  --hover-color: #39ff14;
+  --text-glow: 0 0 5px currentColor;
+  --scanline-color: rgba(255, 255, 255, 0.04);
+  --scanline-bar: rgba(255, 255, 255, 0.06);
+}
+
+/* ===== 7. paper: line-printer paper (auto-light) ===== */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --term-font: 'Courier New', Courier, 'IBM VGA', monospace;
+    --bg-color: #f4efe1;
+    --punct-color: #6b6458;
+    --keyval-color: #1d1b17;
+    --hover-color: #b0301c;
+    --text-glow: 0 0 0.6px currentColor;
+    --scanline-color: rgba(0, 0, 0, 0.03);
+    --scanline-bar: rgba(0, 0, 0, 0.04);
+  }
+}
+
+:root[data-theme="paper"] {
+  color-scheme: light;
+  --term-font: 'Courier New', Courier, 'IBM VGA', monospace;
+  --bg-color: #f4efe1;
+  --punct-color: #6b6458;
+  --keyval-color: #1d1b17;
+  --hover-color: #b0301c;
+  --text-glow: 0 0 0.6px currentColor;
+  --scanline-color: rgba(0, 0, 0, 0.03);
+  --scanline-bar: rgba(0, 0, 0, 0.04);
+}
+
+/* ===== 2. amber: P3 phosphor amber monitors ===== */
+:root[data-theme="amber"] {
+  color-scheme: dark;
+  --term-font: 'IBM EGA', 'IBM VGA', monospace;
+  --bg-color: #0d0208;
+  --punct-color: #ffb000;
+  --keyval-color: #ff9800;
+  --hover-color: #ffcc00;
+  --text-glow: 0 0 5px currentColor;
+  --scanline-color: rgba(255, 255, 255, 0.04);
+  --scanline-bar: rgba(255, 255, 255, 0.06);
+}
+
+/* ===== 3. white: P4 phosphor, DEC VT100 ===== */
+:root[data-theme="white"] {
+  color-scheme: dark;
+  --term-font: 'DEC Rainbow', 'IBM VGA', monospace;
+  --bg-color: #05070a;
+  --punct-color: #e8f1ff;
+  --keyval-color: #c4d4ea;
+  --hover-color: #ffffff;
+  --text-glow: 0 0 5px rgba(200, 220, 255, 0.6);
+  --scanline-color: rgba(255, 255, 255, 0.035);
+  --scanline-bar: rgba(255, 255, 255, 0.05);
+}
+
+/* ===== 4. plasma: orange gas-plasma portables ===== */
+:root[data-theme="plasma"] {
+  color-scheme: dark;
+  --term-font: 'Compaq Portable', 'IBM VGA', monospace;
+  --bg-color: #120200;
+  --punct-color: #ff6a2b;
+  --keyval-color: #ff4f12;
+  --hover-color: #ff9a5c;
+  --text-glow: 0 0 6px currentColor;
+  --scanline-color: rgba(255, 120, 60, 0.04);
+  --scanline-bar: rgba(255, 120, 60, 0.06);
+}
+
+/* ===== 5. dos: VGA 16-colour text mode, blue screen editors ===== */
+:root[data-theme="dos"] {
+  color-scheme: dark;
+  --term-font: 'IBM VGA', monospace;
+  --bg-color: #0000aa;
+  --punct-color: #aaaaaa;
+  --keyval-color: #ffff55;
+  --hover-color: #55ffff;
+  --text-glow: 0 0 2px currentColor;
+  --scanline-color: rgba(0, 0, 0, 0.12);
+  --scanline-bar: rgba(255, 255, 255, 0.05);
+}
+
+/* ===== 6. lcd: reflective LCD, TRS-80 Model 100 ===== */
+:root[data-theme="lcd"] {
+  color-scheme: light;
+  --term-font: 'IBM Convertible', 'IBM VGA', monospace;
+  --bg-color: #c5cfa1;
+  --punct-color: #4a5636;
+  --keyval-color: #1f2a17;
+  --hover-color: #000000;
+  --text-glow: 1px 1px 0 rgba(0, 0, 0, 0.14);
+  --scanline-color: rgba(0, 0, 0, 0.035);
+  --scanline-bar: rgba(0, 0, 0, 0.04);
+}
+
+html {
+  background-color: var(--bg-color);
+}

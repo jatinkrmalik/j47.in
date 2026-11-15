@@ -5,29 +5,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jatin K Malik - Principal Software Engineer</title>
+  <title>Jatin K Malik - Principal Engineer</title>
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Jatin K Malik - Principal Software Engineer" />
+<meta property="og:title" content="Jatin K Malik - Principal Engineer" />
 <meta name="author" content="Jatin K Malik" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Principal Software Engineer at Atlassian, architecting distributed systems and building A2A AI platforms. Previously scaled platforms at Uber and shipped products at Adobe." />
-<meta property="og:description" content="Principal Software Engineer at Atlassian, architecting distributed systems and building A2A AI platforms. Previously scaled platforms at Uber and shipped products at Adobe." />
+<meta name="description" content="Principal Engineer at Atlassian and architect of its agentic interfaces platform (MCP, A2A, CLI). Previously scaled distributed systems at Uber, Synaptic, Shuttl and Adobe. Builds open-source tools like Vocalinux." />
+<meta property="og:description" content="Principal Engineer at Atlassian and architect of its agentic interfaces platform (MCP, A2A, CLI). Previously scaled distributed systems at Uber, Synaptic, Shuttl and Adobe. Builds open-source tools like Vocalinux." />
 <link rel="canonical" href="https://j47.in/" />
 <meta property="og:url" content="https://j47.in/" />
-<meta property="og:site_name" content="Jatin K Malik - Principal Software Engineer" />
+<meta property="og:site_name" content="Jatin K Malik - Principal Engineer" />
 <meta property="og:image" content="https://j47.in/assets/og-image.svg" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="https://j47.in/assets/og-image.svg" />
-<meta property="twitter:title" content="Jatin K Malik - Principal Software Engineer" />
+<meta property="twitter:title" content="Jatin K Malik - Principal Engineer" />
 <meta name="twitter:site" content="@jatinkrmalik" />
 <meta name="twitter:creator" content="@Jatin K Malik" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Jatin K Malik","url":"https://jatinkrmalik.com"},"description":"Principal Software Engineer at Atlassian, architecting distributed systems and building A2A AI platforms. Previously scaled platforms at Uber and shipped products at Adobe.","headline":"Jatin K Malik - Principal Software Engineer","image":"https://j47.in/assets/og-image.svg","name":"Jatin K Malik","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://j47.in/assets/logo.svg"},"name":"Jatin K Malik"},"sameAs":["https://jatinkrmalik.com","https://twitter.com/jatinkrmalik","https://linkedin.com/in/jatinkrmalik","https://github.com/jatinkrmalik"],"url":"https://j47.in/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Jatin K Malik","url":"https://jatinkrmalik.com"},"description":"Principal Engineer at Atlassian and architect of its agentic interfaces platform (MCP, A2A, CLI). Previously scaled distributed systems at Uber, Synaptic, Shuttl and Adobe. Builds open-source tools like Vocalinux.","headline":"Jatin K Malik - Principal Engineer","image":"https://j47.in/assets/og-image.svg","name":"Jatin K Malik","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://j47.in/assets/logo.svg"},"name":"Jatin K Malik"},"sameAs":["https://jatinkrmalik.com","https://twitter.com/jatinkrmalik","https://linkedin.com/in/jatinkrmalik","https://github.com/jatinkrmalik"],"url":"https://j47.in/"}</script>
 <!-- End Jekyll SEO tag -->
 
+  <!-- Apply the saved theme before first paint (see assets/js/terminal-ui.js) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('j47-theme');
+        if (/^(green|amber|white|plasma|dos|lcd|paper)$/.test(t)) document.documentElement.setAttribute('data-theme', t);
+        if (localStorage.getItem('j47-crt') === 'off') document.documentElement.classList.add('no-crt');
+      } catch (e) {}
+    })();
+  </script>
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
   <link rel="manifest" href="/assets/site.webmanifest">
   <link rel="stylesheet" href="/assets/css/normalize.css" />
@@ -35,6 +45,8 @@
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <!-- Terminal fonts CSS -->
   <link rel="stylesheet" href="/assets/css/terminal-fonts.css" />
+  <!-- Retro terminal theme palettes -->
+  <link rel="stylesheet" href="/assets/css/themes.css" />
   <!-- Custom theme toggle CSS -->
   <link rel="stylesheet" href="/assets/css/theme-toggle.css" />
   <!-- Custom styles to override theme defaults -->
@@ -43,16 +55,20 @@
   <link rel="stylesheet" href="/assets/css/viewport-fix.css" />
   <!-- CRT scanline overlay effects -->
   <link rel="stylesheet" href="/assets/css/crt-overlay.css" />
+  <!-- CRT power-on animation (plays once on load) -->
+  <link rel="stylesheet" href="/assets/css/crt-poweron.css" />
+  <!-- Status line, theme picker and shortcuts help -->
+  <link rel="stylesheet" href="/assets/css/terminal-ui.css" />
   <!-- Script to suppress source map warnings -->
   <script src="/assets/js/suppress-sourcemap.js"></script>
   <script src="/assets/js/typed.umd.js"></script>
   <style>
     /* All CSS for CRT effect is now managed by viewport-fix.css */
     
-    /* Apply IBM terminal font to body */
+    /* Each theme's own text-mode font (themes.css) */
     body {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.95em;
+      font-family: var(--term-font, 'IBM VGA', monospace);
+      font-size: 1em;
     }
     
     /* Blinking cursor is also managed in viewport-fix.css */
@@ -64,6 +80,7 @@
 </head>
 
 <body>
+<div class="crt-poweron" aria-hidden="true"><div class="crt-poweron__beam"></div></div>
 <div class="crt-scanlines"></div>
 <div class="crt-scanline"></div>
 <div class="crt-flicker"></div>
@@ -79,7 +96,7 @@
   
   <div class="my ms">
     <div id="strings">
-      <span>Principal Software Engineer</span><span>System Architect</span><span>Problem Solver</span><span>Performance Engineer</span><span>Distributed Systems Expert</span><span>Cloud Infrastructure Specialist</span><span>Scalability Enthusiast</span>
+      <span>Principal Engineer</span><span>Agentic Interfaces Architect</span><span>Distributed Systems Architect</span><span>Open Source Builder</span><span>Performance Engineer</span><span>Problem Solver</span>
     </div>
     "<span class="key">who_am_i</span>":
     "<span class="value"><span id="typed"></span></span>",
@@ -91,20 +108,8 @@
   </div>
   
   <div class="my ms">
-    "<span class="key">about_me</span>": [
-    <p class="ms">
-      "<span class="value">Architecting and scaling distributed systems that serve millions of users at Uber and Atlassian</span>",
-    </p>
-    <p class="ms">
-      "<span class="value">Building A2A (Agent-to-Agent) AI platforms that enable autonomous AI agents to collaborate and execute complex workflows</span>",
-    </p>
-    <p class="ms">
-      "<span class="value">Solving hard engineering problems at scale - from data portability platforms to real-time IoT systems</span>",
-    </p>
-    <p class="ms">
-      "<span class="value">15+ years shipping production code across Adobe, Uber, Synaptic, Shuttl, and Atlassian</span>"
-    </p>
-    ],
+    "<span class="key">about_me</span>":
+    "<span class="value">I've been writing code for close to 20 years, and doing it for a living since 2014. I'm a Principal Engineer at Atlassian and the architect of its agentic interfaces platform, the front door every AI agent goes through to reach Jira, Confluence and the rest over MCP, A2A and CLI. Before that I built data residency at Atlassian and scaled distributed systems at Uber, Synaptic, Shuttl and Adobe. Off the clock I build open-source tools like Vocalinux, tinker with my homelab and write about all of it on my blog.</span>",
   </div>
   
   <div class="my ms">
@@ -118,28 +123,57 @@
       "<a class="value" href="https://www.uber.com" target="_blank">Uber</a>",
     </p>
     <p class="ms">
-      "<span class="key">SDE 3</span>":
+      "<span class="key">SDE III</span>":
       "<a class="value" href="https://www.synaptic.com" target="_blank">Synaptic</a>",
     </p>
     <p class="ms">
-      "<span class="key">SDE 2</span>":
+      "<span class="key">SDE II</span>":
       "<a class="value" href="https://www.crunchbase.com/organization/shuttl" target="_blank">Shuttl</a>",
     </p>
     <p class="ms">
-      "<span class="key">SDE 1</span>":
+      "<span class="key">SDE I</span>":
       "<a class="value" href="https://www.adobe.com" target="_blank">Adobe</a>",
     </p>
     <p class="ms">
-      "<span class="key">Intern</span>":
+      "<span class="key">SDE Intern</span>":
       "<a class="value" href="https://www.webyog.com" target="_blank">Webyog</a>",
     </p>
     <p class="ms">
-      "<span class="key">MSP</span>":
+      "<span class="key">Microsoft Student Partner</span>":
       "<a class="value" href="https://mvp.microsoft.com/studentambassadors" target="_blank">Microsoft</a>",
     </p>
     <p class="ms">
-      "<span class="key">Intern</span>":
+      "<span class="key">Summer Intern</span>":
       "<a class="value" href="https://www.drdo.gov.in" target="_blank">DRDO</a>"
+    </p>
+    ],
+  </div>
+  
+  <div class="my ms">
+    "<span class="key">open_source</span>": [
+    <p class="ms">
+      "<span class="key">Vocalinux</span>":
+      "<a class="value" href="https://vocalinux.com/" target="_blank">offline voice dictation for Linux (1k+ stars)</a>",
+    </p>
+    <p class="ms">
+      "<span class="key">VocaMac</span>":
+      "<a class="value" href="https://vocamac.com" target="_blank">offline voice-to-text for macOS</a>",
+    </p>
+    <p class="ms">
+      "<span class="key">VocaWin</span>":
+      "<a class="value" href="https://vocawin.com/" target="_blank">offline voice-to-text for Windows (beta)</a>",
+    </p>
+    <p class="ms">
+      "<span class="key">VocaPhone</span>":
+      "<a class="value" href="https://vocaphone.vocahq.com/" target="_blank">on-device dictation for iPhone and Android</a>",
+    </p>
+    <p class="ms">
+      "<span class="key">LLMFeeder</span>":
+      "<a class="value" href="https://llmfeeder.fyi" target="_blank">any web page to clean Markdown for LLMs</a>",
+    </p>
+    <p class="ms">
+      "<span class="key">localcaption</span>":
+      "<a class="value" href="https://github.com/jatinkrmalik/localcaption" target="_blank">offline Whisper transcription for video and audio</a>"
     </p>
     ],
   </div>
@@ -170,7 +204,7 @@
       "<span class="value">Python</span>",
     </p>
     <p class="ms">
-      "<span class="value">Golang</span>",
+      "<span class="value">Go</span>",
     </p>
     <p class="ms">
       "<span class="value">Java/Kotlin</span>",
@@ -179,7 +213,16 @@
       "<span class="value">Ruby</span>",
     </p>
     <p class="ms">
-      "<span class="value">C/C++</span>"
+      "<span class="value">C/C++</span>",
+    </p>
+    <p class="ms">
+      "<span class="value">JavaScript/TypeScript</span>",
+    </p>
+    <p class="ms">
+      "<span class="value">Swift</span>",
+    </p>
+    <p class="ms">
+      "<span class="value">Rust</span>"
     </p>
     ],
   </div>
@@ -207,25 +250,19 @@
   <div class="my ms">
     "<span class="key">ai_ml</span>": [
     <p class="ms">
-      "<span class="value">Large Language Models (GPT, Claude, Llama, Gemini)</span>",
+      "<span class="value">Agentic Interfaces (MCP, A2A, MCP Apps, A2UI, CLI)</span>",
     </p>
     <p class="ms">
-      "<span class="value">RAG & Vector Databases (Pinecone, Weaviate, pgvector, Chroma)</span>",
+      "<span class="value">Large Language Models (Claude, GPT, Gemini, Llama)</span>",
     </p>
     <p class="ms">
-      "<span class="value">AI/ML Frameworks (LangChain, LlamaIndex, OpenAI SDK, Anthropic SDK)</span>",
+      "<span class="value">RAG, Embeddings & Semantic Search (pgvector)</span>",
     </p>
     <p class="ms">
-      "<span class="value">Agent Frameworks & A2A (MCP, AutoGPT, CrewAI, A2A Protocol)</span>",
+      "<span class="value">On-device Speech (whisper.cpp, Whisper, VOSK, ONNX)</span>",
     </p>
     <p class="ms">
-      "<span class="value">Prompt Engineering & Fine-tuning (LoRA, QLoRA)</span>",
-    </p>
-    <p class="ms">
-      "<span class="value">Embeddings & Semantic Search</span>",
-    </p>
-    <p class="ms">
-      "<span class="value">Model Deployment (vLLM, TGI, ONNX)</span>"
+      "<span class="value">Model Serving (vLLM, ONNX Runtime)</span>"
     </p>
     ],
   </div>
@@ -302,7 +339,38 @@
       "<a class="value" href="https://linkedin.com/in/jatinkrmalik" target="_blank">LinkedIn</a>",
     </p>
     <p class="ms">
-      "<a class="value" href="https://jatinkrmalik.com" target="_blank">Portfolio</a>"
+      "<a class="value" href="https://medium.com/@jatinkrmalik" target="_blank">Medium</a>",
+    </p>
+    <p class="ms">
+      "<a class="value" href="https://dev.to/jatinkrmalik" target="_blank">DEV</a>",
+    </p>
+    <p class="ms">
+      "<a class="value" href="https://jatinkrmalik.com" target="_blank">Blog</a>"
+    </p>
+    ],
+  </div>
+  
+  <div class="my ms">
+    "<span class="key">talks</span>": [
+    <p class="ms">
+      "<span class="key">Delhi FOSS 2.0, 2024</span>":
+      "<a class="value" href="https://docs.google.com/presentation/d/1_c43HN79Gj12F-JmPMBLXxkGoEb1YcEe2i-r0K6s5lc/edit?usp=sharing" target="_blank">The Redis Paradox: Beyond the Cache Horizon!</a>",
+    </p>
+    <p class="ms">
+      "<span class="key">TechXcelerate 2.0, 2024</span>":
+      "<a class="value" href="https://docs.google.com/presentation/d/1Jn_43xywv4D6MibfeMyyNgsOk9xl-h-QTuxelE8X49g/edit?usp=sharing" target="_blank">Code the Future: Your Journey into Web Dev & SWE</a>",
+    </p>
+    <p class="ms">
+      "<span class="key">FOSS United Delhi, 2023</span>":
+      "<a class="value" href="https://github.com/jatinkrmalik/FOSS-United-Delhi-Dec-2023" target="_blank">The Coder's Guide to Job Security: Mastering the Art of Confusing Code!</a>",
+    </p>
+    <p class="ms">
+      "<span class="key">FOSS Conf Delhi, 2023</span>":
+      "<a class="value" href="https://github.com/jatinkrmalik/FOSSConf-23-Keynote" target="_blank">Elevate Your Code: Practical Insights for 10X Impact</a>",
+    </p>
+    <p class="ms">
+      "<span class="key">GDG DevFest Delhi, 2023</span>":
+      "<a class="value" href="https://docs.google.com/presentation/d/1MxzBqfPfVoMJC8F3pfuFt5AIFqfLgYMxKoYKj2N-Knw/edit" target="_blank">Data Portability in Enterprise Cloud</a>"
     </p>
     ]
   </div>
@@ -310,6 +378,24 @@
 </div>
 
   </main>
+
+  <footer class="statusbar">
+    <span class="statusbar__host">j47.in</span>
+    <span class="statusbar__msg" role="status" aria-live="polite"></span>
+    <button type="button" data-action="help" aria-haspopup="dialog" aria-keyshortcuts="?">[?]<span class="statusbar__help-label"> help</span></button>
+    <button type="button" data-action="theme" aria-haspopup="listbox" aria-expanded="false" aria-controls="theme-menu" aria-keyshortcuts="t">theme: <span class="statusbar__theme-name">auto</span> &#9652;</button>
+    <div class="theme-menu" id="theme-menu" hidden>
+      <p class="theme-menu__title">&#9508; select theme &#9500;</p>
+      <div class="theme-menu__list" role="listbox" aria-label="Theme"></div>
+      <p class="theme-menu__hint">&#8593;&#8595; preview &middot; enter pick &middot; esc cancel</p>
+    </div>
+  </footer>
+
+  <dialog class="help" id="help" aria-labelledby="help-title">
+    <h2 class="help__title" id="help-title">&#9508; keyboard shortcuts &#9500;</h2>
+    <dl class="help__list" id="help-list"></dl>
+    <p class="help__footer"><button type="button" data-action="close-help">[ esc ] close</button></p>
+  </dialog>
   <script>
     // Add a slight delay for the typed effect to enhance the terminal feel
     setTimeout(function() {
@@ -333,6 +419,8 @@
   </script>
   <!-- Viewport scaling script -->
   <script src="/assets/js/viewport-scale.js"></script>
+  <!-- Theme picker + keyboard shortcuts -->
+  <script src="/assets/js/terminal-ui.js"></script>
 </body>
 
 </html> 

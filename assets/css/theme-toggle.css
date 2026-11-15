@@ -1,34 +1,4 @@
-:root {
-  /* Matrix-style green terminal (dark mode) */
-  --matrix-bg: #000000;  
-  --matrix-punct: #00ff41;
-  --matrix-keyval: #00cc36;
-  --matrix-hover: #39ff14;
-  
-  /* Amber terminal (light mode) */
-  --amber-bg: #0d0208;
-  --amber-punct: #ffb000;
-  --amber-keyval: #ff9800;
-  --amber-hover: #ffcc00;
-}
-
-/* Light mode - Amber CRT terminal */
-:root {
-  --bg-color: var(--amber-bg);
-  --punct-color: var(--amber-punct);
-  --keyval-color: var(--amber-keyval);
-  --hover-color: var(--amber-hover);
-}
-
-/* Dark mode - Matrix-style green terminal */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: var(--matrix-bg);
-    --punct-color: var(--matrix-punct);
-    --keyval-color: var(--matrix-keyval);
-    --hover-color: var(--matrix-hover);
-  }
-}
+/* Theme palettes live in themes.css; this file applies them. */
 
 /* Apply the theme variables and CRT effects */
 body {
@@ -38,7 +8,7 @@ body {
   position: relative;
   min-height: 100vh;
   overflow: auto;
-  text-shadow: 0 0 5px currentColor;
+  text-shadow: var(--text-glow, 0 0 5px currentColor);
 }
 
 /* CRT scanlines & flicker moved to crt-overlay.css for better visibility on dark backgrounds */
@@ -53,14 +23,14 @@ body::after {
 .error {
   color: var(--keyval-color);
   transition: color 0.3s ease;
-  text-shadow: 0 0 5px currentColor;
+  text-shadow: var(--text-glow, 0 0 5px currentColor);
 }
 
 a:hover,
 a:active {
   color: var(--hover-color);
   transition: color 0.3s ease;
-  text-shadow: 0 0 10px currentColor;
+  text-shadow: var(--text-glow, 0 0 10px currentColor);
 }
 
 /* JSON formatting adjustments for terminal look */
