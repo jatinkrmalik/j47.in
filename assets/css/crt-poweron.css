@@ -1,0 +1,145 @@
+/*
+ * CRT Power-On Effect
+ * Plays once on page load, like switching on an old tube TV:
+ *
+ *   0.00s  black screen (the "click")
+ *   0.12s  a bright dot ignites in the centre
+ *   0.27s  the dot stretches into a horizontal beam
+ *   0.60s  the beam opens vertically into a full white flash
+ *   0.83s  the flash decays into a phosphor afterglow, revealing the page
+ *   0.80s+ the page itself settles from overexposed/blurry to sharp
+ *
+ * Pure CSS: the overlay hides itself when the animation ends, so nothing
+ * stays on top of the page. Skipped entirely for prefers-reduced-motion.
+ */
+
+:root {
+  --crt-poweron-duration: 1.5s;
+}
+
+/* ===== OVERLAY (sits above the scanline layers at 9997–9999) ===== */
+.crt-poweron {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  animation: crt-poweron-screen var(--crt-poweron-duration) linear forwards;
+}
+
+/* Black until the beam has filled the screen, then get out of the way */
+@keyframes crt-poweron-screen {
+  0%, 54%   { background-color: #000; visibility: visible; }
+  55%, 99%  { background-color: transparent; visibility: visible; }
+  100%      { background-color: transparent; visibility: hidden; }
+}
+
+/* ===== ELECTRON BEAM: dot -> line -> full screen -> afterglow ===== */
+.crt-poweron__beam {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow:
+    0 0 10px 3px #fff,
+    0 0 40px 12px var(--punct-color, #00ff41);
+  animation: crt-poweron-beam var(--crt-poweron-duration) cubic-bezier(0.25, 0.6, 0.3, 1) forwards;
+}
+
+@keyframes crt-poweron-beam {
+  0%, 7% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  /* dot ignites */
+  8% {
+    width: 3px;
+    height: 3px;
+    opacity: 1;
+  }
+  /* dot glows / swells slightly */
+  18% {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  /* stretches into a horizontal line */
+  34% {
+    width: 100vw;
+    height: 2px;
+    border-radius: 0;
+  }
+  /* holds as a line for a beat */
+  40% {
+    width: 100vw;
+    height: 2px;
+    background-color: #fff;
+  }
+  /* opens vertically into a full-screen flash */
+  55% {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    opacity: 1;
+    background-color: #fff;
+    box-shadow: none;
+  }
+  /* flash decays into the phosphor colour */
+  70% {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    opacity: 0.35;
+    background-color: var(--punct-color, #00ff41);
+    box-shadow: none;
+  }
+  100% {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    opacity: 0;
+    background-color: var(--punct-color, #00ff41);
+    box-shadow: none;
+  }
+}
+
+/* ===== PAGE CONTENT: overexposed and soft, then settles ===== */
+.crt main {
+  animation: crt-poweron-settle 0.9s ease-out 0.8s both;
+}
+
+@keyframes crt-poweron-settle {
+  0% {
+    opacity: 0;
+    filter: brightness(3) blur(2px) saturate(0);
+  }
+  35% {
+    opacity: 1;
+    filter: brightness(1.8) blur(0.8px) saturate(0.6);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  .crt-poweron {
+    display: none;
+  }
+
+  .crt main {
+    animation: none;
+  }
+}
+
+/* typed.js source list: typed.js reads it while hidden. Without this the raw
+ * list flashes on screen between the power-on reveal and typed.js starting. */
+#strings {
+  display: none;
+}

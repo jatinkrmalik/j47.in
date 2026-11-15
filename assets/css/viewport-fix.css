@@ -37,7 +37,6 @@ body {
   height: auto;
   margin: 2vh 4vw; /* Equal left and right margins */
   padding: 2vh 0; /* Remove horizontal padding, margin handles spacing */
-  animation: turn-on 2s linear;
   text-align: left; /* Ensure text is left-aligned */
   align-self: flex-start;
   overflow-x: hidden;
@@ -74,40 +73,6 @@ main::before {
   left: 10px;
   opacity: 0;
   animation: blink 1s infinite;
-}
-
-/* Animation for CRT startup effect */
-@keyframes turn-on {
-  0% {
-    opacity: 0;
-    filter: brightness(30);
-    transform: scale(0.9, 0.1);
-  }
-  10% {
-    opacity: 0.6;
-    filter: brightness(14);
-    transform: scale(0.9, 0.2);
-  }
-  30% {
-    opacity: 0.4;
-    filter: brightness(8);
-    transform: scale(1, 0.5);
-  }
-  50% {
-    opacity: 0.2;
-    filter: brightness(4);
-    transform: scale(1, 1);
-  }
-  80% {
-    opacity: 0.8;
-    filter: brightness(1.6);
-    transform: scale(1, 1);
-  }
-  100% {
-    opacity: 1;
-    filter: brightness(1);
-    transform: scale(1, 1);
-  }
 }
 
 /* Specific adjustments for very small screens */

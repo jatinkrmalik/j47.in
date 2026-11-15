@@ -23,16 +23,18 @@
   <link rel="stylesheet" href="{{ 'assets/css/viewport-fix.css' | relative_url }}" />
   <!-- CRT scanline overlay effects -->
   <link rel="stylesheet" href="{{ 'assets/css/crt-overlay.css' | relative_url }}" />
+  <!-- CRT power-on animation (plays once on load) -->
+  <link rel="stylesheet" href="{{ 'assets/css/crt-poweron.css' | relative_url }}" />
   <!-- Script to suppress source map warnings -->
   <script src="{{ 'assets/js/suppress-sourcemap.js' | relative_url }}"></script>
   <script src="{{ 'assets/js/typed.umd.js' | relative_url }}"></script>
   <style>
     /* All CSS for CRT effect is now managed by viewport-fix.css */
     
-    /* Apply IBM terminal font to body */
+    /* Apply classic IBM PC VGA font to body */
     body {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.95em;
+      font-family: 'IBM VGA', 'IBM Plex Mono', monospace;
+      font-size: 1em;
     }
     
     /* Blinking cursor is also managed in viewport-fix.css */
@@ -44,6 +46,7 @@
 </head>
 
 <body>
+<div class="crt-poweron" aria-hidden="true"><div class="crt-poweron__beam"></div></div>
 <div class="crt-scanlines"></div>
 <div class="crt-scanline"></div>
 <div class="crt-flicker"></div>

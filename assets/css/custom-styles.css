@@ -1,12 +1,16 @@
 /* Override the default font-family from the theme */
 body, h1, h2, h3, h4, h5, h6, p, span, div {
   /* This will override the "hack" font from the theme */
-  font-family: 'IBM Plex Mono', monospace !important;
+  font-family: 'IBM VGA', 'IBM Plex Mono', monospace !important;
+  /* Bitmap font: no faux bold/italic, no smoothing */
+  font-synthesis: none;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
 }
 
 /* Additional terminal styling for specific elements */
 .key, .value {
-  font-weight: 500; /* Slightly bolder for key/value pairs */
+  font-weight: normal; /* VGA font has a single weight */
 }
 
 /* Cursor styling for links */
@@ -56,7 +60,7 @@ a:hover::after {
 
 /* Style adjustments for code blocks */
 code, pre {
-  font-family: 'IBM Plex Mono', monospace !important;
+  font-family: 'IBM VGA', 'IBM Plex Mono', monospace !important;
   background-color: rgba(0,0,0,0.2);
   padding: 2px 4px;
   border-radius: 2px;
