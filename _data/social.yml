@@ -1,0 +1,72 @@
+# Links in the status-line key bar (_layouts/default.html).
+#
+# key:   the letter shown in the bar and the keyboard shortcut (terminal-ui.js).
+#        Avoid keys the page already uses: ? t T 0-7 r s j k
+# icon:  pixel-art logo, one string per row, "#" = lit pixel. Rows must all be
+#        the same width. Drawn as crisp SVG in the theme's colour, like a
+#        custom glyph in an old character set.
+- label: Blog
+  key: b
+  url: https://jatinkrmalik.com
+  icon:   # pencil
+    - ".......#."
+    - "......###"
+    - ".....###."
+    - "....###.."
+    - "...###..."
+    - "..###...."
+    - ".###....."
+    - ".##......"
+    - "#........"
+- label: GitHub
+  key: g
+  url: https://github.com/jatinkrmalik
+  icon:   # octocat
+    - ".#.....#."
+    - ".##...##."
+    - ".#######."
+    - "#########"
+    - "##.###.##"
+    - "#########"
+    - ".#######."
+    - "..#...#.."
+    - "..#...#.."
+- label: LinkedIn
+  key: l
+  url: https://linkedin.com/in/jatinkrmalik
+  icon:   # "in" knocked out of a rounded square
+    - ".#######."
+    - "#.#######"
+    - "#########"
+    - "#.#...###"
+    - "#.#.##.##"
+    - "#.#.##.##"
+    - "#.#.##.##"
+    - "#.#.##.##"
+    - ".#######."
+- label: X
+  key: x
+  url: https://x.com/jatinkrmalik
+  icon:
+    - "##......#"
+    - ".##....#."
+    - "..##..#.."
+    - "...###..."
+    - "....##..."
+    - "...#.##.."
+    - "..#...##."
+    - ".#.....##"
+    - "#.......#"
+- label: YouTube
+  key: y
+  url: https://youtube.com/@jatinkrmalik
+  icon:   # play button
+    - ".#########."
+    - "###########"
+    - "####.######"
+    - "####..#####"
+    - "####...####"
+    - "####..#####"
+    - "####.######"
+    - "###########"
+    - ".#########."

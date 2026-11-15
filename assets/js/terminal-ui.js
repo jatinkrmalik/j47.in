@@ -23,12 +23,6 @@
     { id: 'paper',  desc: 'line-printer paper (light)' }
   ];
 
-  // Social links found on the page, by label -> shortcut key
-  var SOCIAL_KEYS = {
-    blog: 'b', github: 'g', x: 'x', linkedin: 'l',
-    youtube: 'y', email: 'e', medium: 'm', dev: 'v'
-  };
-
   var root = document.documentElement;
   var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -69,8 +63,11 @@
   function applyTheme(id) {
     if (id === 'auto') root.removeAttribute('data-theme');
     else root.setAttribute('data-theme', id);
-    var label = id === 'auto' ? 'auto (' + effectiveTheme() + ')' : id;
-    themeName.textContent = label;
+    // "(green)" is its own span so a narrow status line can drop it
+    themeName.innerHTML = id === 'auto'
+      ? 'auto<span class="statusbar__theme-auto"> (' + effectiveTheme() + ')</span>'
+      : id;
+    queueFit(); // new font and label, new widths
   }
 
   function chooseTheme(id) {
@@ -183,12 +180,40 @@
   // ---------- help dialog ----------
   var socialLinks = {};
 
+  // Links come from the key bar (_data/social.yml); each carries its own key
   function collectSocialLinks() {
-    document.querySelectorAll('#json a.value').forEach(function (a) {
-      var label = a.textContent.trim().toLowerCase();
-      var key = SOCIAL_KEYS[label];
-      if (key && !socialLinks[key]) socialLinks[key] = { label: label, href: a.href };
+    statusbar.querySelectorAll('.keybar a[data-key]').forEach(function (a) {
+      var key = a.dataset.key;
+      if (key && !socialLinks[key]) {
+        var label = a.querySelector('.keybar__label');
+        socialLinks[key] = { label: (label ? label.textContent : key).trim().toLowerCase(), href: a.href };
+      }
     });
+  }
+
+  // Keep the page's bottom padding equal to the footer's real height
+  function syncFooterHeight() {
+    root.style.setProperty('--statusbar-height', statusbar.offsetHeight + 'px');
+  }
+
+  // Keep the status line on one row: step through the compact levels in
+  // terminal-ui.css ("ONE-ROW FIT") until nothing overflows. Widths depend
+  // on the theme's font, so this re-runs on resize, theme change and font load.
+  var statusLine = statusbar.querySelector('.statusbar__line');
+  var MAX_FIT = 3;
+  function fitStatusLine() {
+    if (!statusLine) return;
+    for (var level = 0; level <= MAX_FIT; level++) {
+      statusbar.dataset.fit = level;
+      if (statusLine.scrollWidth <= statusLine.clientWidth) break;
+    }
+  }
+
+  var fitQueued = false;
+  function queueFit() {
+    if (fitQueued) return;
+    fitQueued = true;
+    requestAnimationFrame(function () { fitQueued = false; fitStatusLine(); });
   }
 
   function buildHelp() {
@@ -197,7 +222,7 @@
       ['t / T', 'next / previous theme'],
       ['0–7', 'pick a theme (0 = auto)'],
       ['r', 'reboot (replay power-on)'],
-      ['s', 'scanlines on / off'],
+      ['s', 'screen effects on / off'],
       ['j / k', 'scroll down / up']
     ];
     var html = rows.map(row).join('');
@@ -236,7 +261,7 @@
   function toggleCrt() {
     var off = root.classList.toggle('no-crt');
     save(CRT_KEY, off ? 'off' : null);
-    flash('scanlines: ' + (off ? 'off' : 'on'));
+    flash('screen effects: ' + (off ? 'off' : 'on'));
   }
 
   function openLink(link) {
@@ -270,6 +295,14 @@
 
   // ---------- init ----------
   collectSocialLinks();
+  fitStatusLine();
+  syncFooterHeight();
+  if (window.ResizeObserver) new ResizeObserver(syncFooterHeight).observe(statusbar);
+  window.addEventListener('resize', queueFit);
+  if (document.fonts) {
+    document.fonts.addEventListener('loadingdone', queueFit);
+    document.fonts.ready.then(queueFit);
+  }
   buildMenu();
   buildHelp();
   applyTheme(currentTheme());
