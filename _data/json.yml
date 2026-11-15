@@ -4,23 +4,23 @@
 - key: who_am_i
   typed: true
   value:
-    - Principal Software Engineer
-    - System Architect
-    - Problem Solver
+    - Principal Engineer
+    - Agentic Interfaces Architect
+    - Distributed Systems Architect
+    - Open Source Builder
     - Performance Engineer
-    - Distributed Systems Expert
-    - Cloud Infrastructure Specialist
-    - Scalability Enthusiast
+    - Problem Solver
 
 - key: location
   value: San Francisco Bay Area, CA
 
 - key: about_me
-  value:
-    - Architecting and scaling distributed systems that serve millions of users at Uber and Atlassian
-    - Building A2A (Agent-to-Agent) AI platforms that enable autonomous AI agents to collaborate and execute complex workflows
-    - Solving hard engineering problems at scale - from data portability platforms to real-time IoT systems
-    - 15+ years shipping production code across Adobe, Uber, Synaptic, Shuttl, and Atlassian
+  value: >-
+    I've been writing code for close to 20 years, and doing it for a living since 2014.
+    I'm a Principal Engineer at Atlassian and the architect of its agentic interfaces platform,
+    the front door every AI agent goes through to reach Jira, Confluence and the rest over MCP, A2A and CLI.
+    Before that I built data residency at Atlassian and scaled distributed systems at Uber, Synaptic, Shuttl and Adobe.
+    Off the clock I build open-source tools like Vocalinux, tinker with my homelab and write about all of it on my blog.
 
 - key: experience
   value:
@@ -30,24 +30,45 @@
     - key: Software Architect
       value: Uber
       url: https://www.uber.com
-    - key: SDE 3
+    - key: SDE III
       value: Synaptic
       url: https://www.synaptic.com
-    - key: SDE 2
+    - key: SDE II
       value: Shuttl
       url: https://www.crunchbase.com/organization/shuttl
-    - key: SDE 1
+    - key: SDE I
       value: Adobe
       url: https://www.adobe.com
-    - key: Intern
+    - key: SDE Intern
       value: Webyog
       url: https://www.webyog.com
-    - key: MSP
+    - key: Microsoft Student Partner
       value: Microsoft
       url: https://mvp.microsoft.com/studentambassadors
-    - key: Intern
+    - key: Summer Intern
       value: DRDO
       url: https://www.drdo.gov.in
+
+- key: open_source
+  value:
+    - key: Vocalinux
+      value: offline voice dictation for Linux (1k+ stars)
+      url: https://vocalinux.com/
+    - key: VocaMac
+      value: offline voice-to-text for macOS
+      url: https://vocamac.com
+    - key: VocaWin
+      value: offline voice-to-text for Windows (beta)
+      url: https://vocawin.com/
+    - key: VocaPhone
+      value: on-device dictation for iPhone and Android
+      url: https://vocaphone.vocahq.com/
+    - key: LLMFeeder
+      value: any web page to clean Markdown for LLMs
+      url: https://llmfeeder.fyi
+    - key: localcaption
+      value: offline Whisper transcription for video and audio
+      url: https://github.com/jatinkrmalik/localcaption
 
 - key: human_skills
   value:
@@ -61,10 +82,13 @@
 - key: languages
   value:
     - Python
-    - Golang
+    - Go
     - Java/Kotlin
     - Ruby
     - C/C++
+    - JavaScript/TypeScript
+    - Swift
+    - Rust
 
 - key: databases
   value:
@@ -76,13 +100,11 @@
 
 - key: ai_ml
   value:
-    - Large Language Models (GPT, Claude, Llama, Gemini)
-    - RAG & Vector Databases (Pinecone, Weaviate, pgvector, Chroma)
-    - AI/ML Frameworks (LangChain, LlamaIndex, OpenAI SDK, Anthropic SDK)
-    - Agent Frameworks & A2A (MCP, AutoGPT, CrewAI, A2A Protocol)
-    - Prompt Engineering & Fine-tuning (LoRA, QLoRA)
-    - Embeddings & Semantic Search
-    - Model Deployment (vLLM, TGI, ONNX)
+    - Agentic Interfaces (MCP, A2A, MCP Apps, A2UI, CLI)
+    - Large Language Models (Claude, GPT, Gemini, Llama)
+    - RAG, Embeddings & Semantic Search (pgvector)
+    - On-device Speech (whisper.cpp, Whisper, VOSK, ONNX)
+    - Model Serving (vLLM, ONNX Runtime)
 
 - key: infrastructure
   value:
@@ -118,5 +140,27 @@
       url: https://youtube.com/@jatinkrmalik
     - value: LinkedIn
       url: https://linkedin.com/in/jatinkrmalik
+    - value: Medium
+      url: https://medium.com/@jatinkrmalik
+    - value: DEV
+      url: https://dev.to/jatinkrmalik
     - value: Blog
       url: https://jatinkrmalik.com
+
+- key: talks
+  value:
+    - key: Delhi FOSS 2.0, 2024
+      value: "The Redis Paradox: Beyond the Cache Horizon!"
+      url: https://docs.google.com/presentation/d/1_c43HN79Gj12F-JmPMBLXxkGoEb1YcEe2i-r0K6s5lc/edit?usp=sharing
+    - key: TechXcelerate 2.0, 2024
+      value: "Code the Future: Your Journey into Web Dev & SWE"
+      url: https://docs.google.com/presentation/d/1Jn_43xywv4D6MibfeMyyNgsOk9xl-h-QTuxelE8X49g/edit?usp=sharing
+    - key: FOSS United Delhi, 2023
+      value: "The Coder's Guide to Job Security: Mastering the Art of Confusing Code!"
+      url: https://github.com/jatinkrmalik/FOSS-United-Delhi-Dec-2023
+    - key: FOSS Conf Delhi, 2023
+      value: "Elevate Your Code: Practical Insights for 10X Impact"
+      url: https://github.com/jatinkrmalik/FOSSConf-23-Keynote
+    - key: GDG DevFest Delhi, 2023
+      value: Data Portability in Enterprise Cloud
+      url: https://docs.google.com/presentation/d/1MxzBqfPfVoMJC8F3pfuFt5AIFqfLgYMxKoYKj2N-Knw/edit

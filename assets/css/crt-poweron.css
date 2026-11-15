@@ -45,7 +45,7 @@
   background-color: #fff;
   box-shadow:
     0 0 10px 3px #fff,
-    0 0 40px 12px var(--punct-color, #00ff41);
+    0 0 40px 12px var(--keyval-color, #00ff41);
   animation: crt-poweron-beam var(--crt-poweron-duration) cubic-bezier(0.25, 0.6, 0.3, 1) forwards;
 }
 
@@ -94,7 +94,7 @@
     height: 100vh;
     border-radius: 0;
     opacity: 0.35;
-    background-color: var(--punct-color, #00ff41);
+    background-color: var(--keyval-color, #00ff41);
     box-shadow: none;
   }
   100% {
@@ -102,7 +102,7 @@
     height: 100vh;
     border-radius: 0;
     opacity: 0;
-    background-color: var(--punct-color, #00ff41);
+    background-color: var(--keyval-color, #00ff41);
     box-shadow: none;
   }
 }

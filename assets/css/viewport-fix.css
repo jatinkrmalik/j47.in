@@ -130,12 +130,12 @@ body::before, body::after {
 ::-webkit-scrollbar {
   width: 16px;
   height: 16px;
-  background: #000000;
+  background: var(--bg-color, #000);
 }
 
 /* Track - the area behind the thumb */
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--bg-color, #000);
   border: 2px solid var(--punct-color, #00ff41);
   border-radius: 0;
 }
@@ -143,7 +143,7 @@ body::before, body::after {
 /* Thumb - the draggable part */
 ::-webkit-scrollbar-thumb {
   background: var(--punct-color, #00ff41);
-  border: 1px solid #000;
+  border: 1px solid var(--bg-color, #000);
   box-shadow: 0 0 8px var(--punct-color, #00ff41);
 }
 
@@ -155,7 +155,7 @@ body::before, body::after {
 
 /* Buttons at ends of scrollbar */
 ::-webkit-scrollbar-button {
-  background-color: #000;
+  background-color: var(--bg-color, #000);
   border: 2px solid var(--punct-color, #00ff41);
   height: 16px;
   width: 16px;
@@ -164,17 +164,17 @@ body::before, body::after {
 
 /* Buttons hover effect */
 ::-webkit-scrollbar-button:hover {
-  background-color: rgba(0, 255, 65, 0.2);
+  background-color: color-mix(in srgb, var(--punct-color, #00ff41) 20%, transparent);
 }
 
 /* Corner where scrollbars meet */
 ::-webkit-scrollbar-corner {
-  background-color: #000;
+  background-color: var(--bg-color, #000);
   border: 2px solid var(--punct-color, #00ff41);
 }
 
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--punct-color, #00ff41) #000;
+  scrollbar-color: var(--punct-color, #00ff41) var(--bg-color, #000);
 } 

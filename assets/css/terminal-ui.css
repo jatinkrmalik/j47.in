@@ -1,0 +1,236 @@
+/*
+ * Terminal UI: tmux-style status line, theme picker menu, shortcuts help dialog.
+ * Behaviour lives in assets/js/terminal-ui.js.
+ */
+
+/* Leave room for the fixed status line */
+body {
+  padding-bottom: 3em;
+}
+
+/* Buttons inside the terminal chrome look like text */
+.statusbar button,
+.theme-menu button,
+.help button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0 0.4em;
+  cursor: pointer;
+  text-shadow: inherit;
+}
+
+.statusbar button:hover,
+.statusbar button:focus-visible,
+.statusbar button[aria-expanded="true"],
+.help button:hover,
+.help button:focus-visible {
+  background: var(--punct-color);
+  color: var(--bg-color);
+  text-shadow: none;
+  outline: none;
+}
+
+/* ===== STATUS LINE ===== */
+.statusbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9996; /* under the scanlines so they run across it too */
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.2em 0.6em;
+  font-family: 'IBM VGA', 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  white-space: nowrap;
+  color: var(--punct-color);
+  background: var(--bg-color);
+  border-top: 1px solid var(--punct-color);
+}
+
+.statusbar__host {
+  padding: 0 0.5em;
+  background: var(--punct-color);
+  color: var(--bg-color);
+  text-shadow: none;
+}
+
+.statusbar__msg {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--keyval-color);
+}
+
+.statusbar__theme-name {
+  color: var(--keyval-color);
+}
+
+.statusbar button:hover .statusbar__theme-name,
+.statusbar button:focus-visible .statusbar__theme-name,
+.statusbar button[aria-expanded="true"] .statusbar__theme-name {
+  color: inherit;
+}
+
+/* ===== THEME MENU (DOS-style pop-up above the status line) ===== */
+.theme-menu {
+  position: absolute;
+  right: 0.6em;
+  bottom: calc(100% + 0.6em);
+  min-width: 18em;
+  max-width: calc(100vw - 1.2em);
+  padding: 0.9em 0 0.5em;
+  background: var(--bg-color);
+  border: 4px double var(--punct-color);
+  box-shadow: 0.5em 0.5em 0 rgba(0, 0, 0, 0.45);
+}
+
+.theme-menu[hidden] {
+  display: none;
+}
+
+.theme-menu__title,
+.help__title {
+  position: absolute;
+  top: -0.85em;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0 0.5em;
+  font-size: inherit;
+  font-weight: normal;
+  background: var(--bg-color);
+  color: var(--punct-color);
+  white-space: nowrap;
+}
+
+.theme-menu__option {
+  display: grid !important;
+  grid-template-columns: 1.5ch 2ch 7ch auto;
+  gap: 0 0.6ch;
+  width: 100%;
+  padding: 0 1em !important;
+  text-align: left;
+}
+
+.theme-menu__option:hover,
+.theme-menu__option:focus-visible {
+  background: var(--punct-color) !important;
+  color: var(--bg-color) !important;
+  text-shadow: none !important;
+  outline: none;
+}
+
+.theme-menu__key {
+  color: var(--keyval-color);
+}
+
+.theme-menu__desc {
+  opacity: 0.75;
+}
+
+.theme-menu__option:hover .theme-menu__key,
+.theme-menu__option:focus-visible .theme-menu__key {
+  color: inherit;
+}
+
+.theme-menu__hint {
+  margin: 0.4em 1em 0;
+  opacity: 0.7;
+}
+
+/* ===== HELP DIALOG ===== */
+.help {
+  position: fixed;
+  max-width: min(34em, calc(100vw - 2em));
+  max-height: calc(100vh - 4em);
+  overflow: visible;
+  padding: 1.4em 1.6em 1em;
+  font-family: 'IBM VGA', 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--punct-color);
+  background: var(--bg-color);
+  border: 4px double var(--punct-color);
+  box-shadow: 0.6em 0.6em 0 rgba(0, 0, 0, 0.45);
+  text-shadow: var(--text-glow, none);
+}
+
+.help::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.help__list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.15em 1.5em;
+  margin: 0;
+  max-height: calc(100vh - 10em);
+  overflow-y: auto;
+}
+
+.help__list dt {
+  color: var(--keyval-color);
+}
+
+.help__list dd {
+  margin: 0;
+}
+
+.help__list kbd {
+  font: inherit;
+}
+
+.help__section {
+  grid-column: 1 / -1;
+  margin-top: 0.6em;
+  opacity: 0.7;
+}
+
+.help__footer {
+  margin: 1em 0 0;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* ===== CRT EFFECTS OFF (s) ===== */
+.no-crt .crt-scanlines,
+.no-crt .crt-scanline,
+.no-crt .crt-flicker {
+  display: none;
+}
+
+/* ===== SMALL SCREENS ===== */
+@media (max-width: 480px) {
+  .statusbar {
+    font-size: 14px;
+  }
+
+  .statusbar__msg {
+    display: none;
+  }
+
+  .statusbar__help-label {
+    display: none;
+  }
+
+  .theme-menu__option {
+    grid-template-columns: 1.5ch 2ch auto;
+  }
+
+  .theme-menu__desc {
+    display: none;
+  }
+}
+
+@media print {
+  .statusbar,
+  .help {
+    display: none;
+  }
+}
