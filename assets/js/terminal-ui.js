@@ -15,12 +15,12 @@
   var THEMES = [
     { id: 'auto',   desc: 'follow your OS (green / paper)' },
     { id: 'green',  desc: 'P1 phosphor, IBM 5151' },
-    { id: 'amber',  desc: 'P3 phosphor, amber monitors' },
-    { id: 'white',  desc: 'P4 phosphor, DEC VT100' },
-    { id: 'plasma', desc: 'orange gas-plasma portables' },
+    { id: 'amber',  desc: 'P3 phosphor, amber EGA clones' },
+    { id: 'white',  desc: 'P4 phosphor, DEC VT100 / Rainbow' },
+    { id: 'plasma', desc: 'gas plasma, Compaq Portable III' },
     { id: 'dos',    desc: 'VGA text mode, blue editors' },
-    { id: 'lcd',    desc: 'reflective LCD, TRS-80 M100' },
-    { id: 'paper',  desc: 'teletype printout (light)' }
+    { id: 'lcd',    desc: 'reflective LCD, IBM PC Convertible' },
+    { id: 'paper',  desc: 'line-printer paper (light)' }
   ];
 
   // Social links found on the page, by label -> shortcut key

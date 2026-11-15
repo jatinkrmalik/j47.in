@@ -45,9 +45,9 @@
   <style>
     /* All CSS for CRT effect is now managed by viewport-fix.css */
     
-    /* Apply classic IBM PC VGA font to body */
+    /* Each theme's own text-mode font (themes.css) */
     body {
-      font-family: 'IBM VGA', 'IBM Plex Mono', monospace;
+      font-family: var(--term-font, 'IBM VGA', monospace);
       font-size: 1em;
     }
     

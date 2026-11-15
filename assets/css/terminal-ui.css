@@ -44,7 +44,7 @@ body {
   align-items: center;
   gap: 0.5em;
   padding: 0.2em 0.6em;
-  font-family: 'IBM VGA', 'IBM Plex Mono', monospace;
+  font-family: var(--term-font, 'IBM VGA', monospace);
   font-size: 16px;
   line-height: 1.5;
   white-space: nowrap;
@@ -151,7 +151,7 @@ body {
   max-height: calc(100vh - 4em);
   overflow: visible;
   padding: 1.4em 1.6em 1em;
-  font-family: 'IBM VGA', 'IBM Plex Mono', monospace;
+  font-family: var(--term-font, 'IBM VGA', monospace);
   font-size: 16px;
   line-height: 1.5;
   color: var(--punct-color);
