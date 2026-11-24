@@ -8,10 +8,17 @@
  *
  * Colours and type
  *   --bg-color        screen background
- *   --punct-color     braces, quotes, commas, chrome
- *   --keyval-color    keys and values
+ *   --punct-color     status line and other chrome
+ *   --syntax-color    JSON braces, quotes, colons, commas (dim)
+ *   --keyval-color    keys (normal)
+ *   --value-color     values: the actual content (bright)
  *   --hover-color     hovered links
  *   --text-glow       phosphor bloom (or LCD shadow, or ink bleed) around text
+ *
+ * Readability: the three text levels copy the hardware's own intensity
+ * attributes (MDA "intensified", VGA bright colours). Content is brightest,
+ * keys are normal, punctuation is dim, so the eye lands on the words.
+ * Effects stay light enough that they never cut into the glyphs.
  *   --term-font       the machine's own text-mode font (terminal-fonts.css)
  *
  * Display hardware (drawn by crt-overlay.css)
@@ -23,6 +30,13 @@
  *   --flicker         60 Hz flicker: block | none
  *   --page-bands      printout bands behind the text, scroll with the page
  *   --page-holes      tractor-feed holes in the margins
+ *
+ * Line grid (the paper theme snaps every line to it, see viewport-fix.css)
+ *   --type-size       body text size
+ *   --line            one printed line: the line pitch of the text
+ *   --grid-top        where the first line starts: main's top margin + padding
+ *   --grid-line       line-height to use; unset = the normal relaxed spacing
+ *   --grid-gap        gap between top-level entries; unset = 1rem
  */
 
 /* ===== Display profiles, shared by the themes below ===== */
@@ -32,26 +46,26 @@
   --surface-mono-crt:
     repeating-linear-gradient(180deg,
       transparent 0, transparent 1px,
-      rgba(0, 0, 0, 0.5) 2px, transparent 3px),
+      rgba(0, 0, 0, 0.18) 2px, transparent 3px),
     radial-gradient(ellipse 120% 100% at 50% 50%,
-      transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+      transparent 70%, rgba(0, 0, 0, 0.35) 100%);
 
   /* Colour CRT: lighter scan lines plus an aperture grille of RGB stripes. */
   --surface-colour-crt:
     repeating-linear-gradient(180deg,
       transparent 0, transparent 1px,
-      rgba(0, 0, 0, 0.35) 2px, transparent 3px),
+      rgba(0, 0, 0, 0.16) 2px, transparent 3px),
     repeating-linear-gradient(90deg,
-      rgba(255, 0, 0, 0.08) 0 1px,
-      rgba(0, 255, 0, 0.08) 1px 2px,
-      rgba(0, 90, 255, 0.08) 2px 3px),
+      rgba(255, 0, 0, 0.05) 0 1px,
+      rgba(0, 255, 0, 0.05) 1px 2px,
+      rgba(0, 90, 255, 0.05) 2px 3px),
     radial-gradient(ellipse 120% 100% at 50% 50%,
-      transparent 55%, rgba(0, 0, 0, 0.45) 100%);
+      transparent 70%, rgba(0, 0, 0, 0.35) 100%);
 
   /* Gas plasma: square glowing cells with dark gaps, flat and even. */
   --surface-plasma:
-    repeating-linear-gradient(180deg, transparent 0 2px, rgba(0, 0, 0, 0.4) 2px 3px),
-    repeating-linear-gradient(90deg, transparent 0 2px, rgba(0, 0, 0, 0.4) 2px 3px);
+    repeating-linear-gradient(180deg, transparent 0 2px, rgba(0, 0, 0, 0.2) 2px 3px),
+    repeating-linear-gradient(90deg, transparent 0 2px, rgba(0, 0, 0, 0.2) 2px 3px);
 
   /* Reflective LCD: faint pixel grid and glare from the room light. */
   --surface-lcd:
@@ -61,24 +75,40 @@
       rgba(255, 255, 255, 0.2), transparent 35%,
       transparent 70%, rgba(0, 0, 0, 0.08));
 
-  /* Green-bar line-printer paper: bands three lines deep, feed holes. */
-  --paper-bands: repeating-linear-gradient(180deg,
-    rgba(110, 165, 110, 0.14) 0 3em, transparent 3em 6em);
+  /* Line grid. rem and vmin only, so these resolve to the same length on
+   * body (where the paper is drawn) and inside main (where the text is). */
+  --type-size: calc(0.7rem + 0.5vmin);
+  --line: calc(var(--type-size) * 1.65);
+  --grid-top: 4vh; /* .crt main: margin-top 2vh + padding-top 2vh */
+
+  /* Green-bar line-printer paper: bands three lines deep, one feed hole
+   * per line. Both start at --grid-top so each band holds exactly three
+   * lines of text. */
+  --paper-bands:
+    linear-gradient(180deg,
+      rgba(110, 165, 110, 0.14) 0 50%, transparent 50% 100%)
+      0 var(--grid-top) / 100% calc(var(--line) * 6) repeat-y;
   --paper-holes:
     radial-gradient(circle, rgba(0, 0, 0, 0.14) 0 0.3em, transparent 0.34em)
-      left 0.3em top 0 / 1.5em 1.5em repeat-y,
+      left 0.3em top var(--grid-top) / 1.5em var(--line) repeat-y,
     radial-gradient(circle, rgba(0, 0, 0, 0.14) 0 0.3em, transparent 0.34em)
-      right 0.3em top 0 / 1.5em 1.5em repeat-y;
+      right 0.3em top var(--grid-top) / 1.5em var(--line) repeat-y;
 
   /* Defaults: a monochrome CRT */
   --screen-surface: var(--surface-mono-crt);
   --tube-radius: 2.2vmin;
   --tube-edge: rgba(0, 0, 0, 0.6);
   --bezel-color: #000;
-  --roll-bar: block;
-  --flicker: block;
+  --roll-bar: none;   /* set to block for the drifting refresh band */
+  --flicker: none;    /* set to block for 60 Hz flicker */
   --page-bands: none;
   --page-holes: none;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --type-size: calc(0.6rem + 0.5vmin);
+  }
 }
 
 /* ===== 1. green: P1 phosphor, IBM 5151 (default / auto-dark) ===== */
@@ -88,9 +118,11 @@
   --term-font: 'IBM MDA', 'IBM VGA', monospace;
   --bg-color: #000000;
   --punct-color: #00ff41;
-  --keyval-color: #00cc36;
+  --syntax-color: #0a9a33;
+  --keyval-color: #00e83c;
+  --value-color: #b9ffca;
   --hover-color: #39ff14;
-  --text-glow: 0 0 1px currentColor, 0 0 7px color-mix(in srgb, currentColor 55%, transparent);
+  --text-glow: 0 0 1px currentColor, 0 0 3px color-mix(in srgb, currentColor 25%, transparent);
   --scanline-bar: rgba(120, 255, 150, 0.05);
 }
 
@@ -101,7 +133,9 @@
     --term-font: 'Courier New', Courier, 'IBM VGA', monospace;
     --bg-color: #f4efe1;
     --punct-color: #6b6458;
-    --keyval-color: #1d1b17;
+    --syntax-color: #9a9282;
+  --keyval-color: #5a5348;
+  --value-color: #1d1b17;
     --hover-color: #b0301c;
     --text-glow: 0 0 0.6px currentColor;
     --screen-surface: none;
@@ -111,6 +145,8 @@
     --flicker: none;
     --page-bands: var(--paper-bands);
     --page-holes: var(--paper-holes);
+    --grid-line: var(--line);
+    --grid-gap: var(--line);
   }
 }
 
@@ -119,7 +155,9 @@
   --term-font: 'Courier New', Courier, 'IBM VGA', monospace;
   --bg-color: #f4efe1;
   --punct-color: #6b6458;
-  --keyval-color: #1d1b17;
+  --syntax-color: #9a9282;
+  --keyval-color: #5a5348;
+  --value-color: #1d1b17;
   --hover-color: #b0301c;
   --text-glow: 0 0 0.6px currentColor;
   --screen-surface: none;
@@ -129,6 +167,9 @@
   --flicker: none;
   --page-bands: var(--paper-bands);
   --page-holes: var(--paper-holes);
+  /* every line lands on the form: fixed pitch, whole-line gaps */
+  --grid-line: var(--line);
+  --grid-gap: var(--line);
 }
 
 /* ===== 2. amber: P3 phosphor amber monitors ===== */
@@ -137,9 +178,11 @@
   --term-font: 'IBM EGA', 'IBM VGA', monospace;
   --bg-color: #0d0208;
   --punct-color: #ffb000;
-  --keyval-color: #ff9800;
+  --syntax-color: #a86a00;
+  --keyval-color: #ffa31a;
+  --value-color: #ffdca8;
   --hover-color: #ffcc00;
-  --text-glow: 0 0 1px currentColor, 0 0 7px color-mix(in srgb, currentColor 55%, transparent);
+  --text-glow: 0 0 1px currentColor, 0 0 3px color-mix(in srgb, currentColor 25%, transparent);
   --scanline-bar: rgba(255, 190, 90, 0.05);
 }
 
@@ -149,9 +192,11 @@
   --term-font: 'DEC Rainbow', 'IBM VGA', monospace;
   --bg-color: #05070a;
   --punct-color: #e8f1ff;
+  --syntax-color: #7d8798;
   --keyval-color: #c4d4ea;
+  --value-color: #ffffff;
   --hover-color: #ffffff;
-  --text-glow: 0 0 1px currentColor, 0 0 6px rgba(200, 220, 255, 0.45);
+  --text-glow: 0 0 1px currentColor, 0 0 3px rgba(200, 220, 255, 0.25);
   --scanline-bar: rgba(220, 235, 255, 0.045);
 }
 
@@ -161,9 +206,11 @@
   --term-font: 'Compaq Portable', 'IBM VGA', monospace;
   --bg-color: #120200;
   --punct-color: #ff6a2b;
-  --keyval-color: #ff4f12;
+  --syntax-color: #a83a10;
+  --keyval-color: #ff6a2b;
+  --value-color: #ffb48a;
   --hover-color: #ff9a5c;
-  --text-glow: 0 0 4px color-mix(in srgb, currentColor 60%, transparent);
+  --text-glow: 0 0 3px color-mix(in srgb, currentColor 35%, transparent);
   --screen-surface: var(--surface-plasma);
   --tube-radius: 0;
   --tube-edge: transparent;
@@ -177,13 +224,15 @@
   --term-font: 'IBM VGA', monospace;
   --bg-color: #0000aa;
   --punct-color: #aaaaaa;
+  --syntax-color: #aaaaaa;
   --keyval-color: #ffff55;
+  --value-color: #ffffff;
   --hover-color: #55ffff;
   /* convergence error: red and blue guns land a hair apart */
   --text-glow:
-    -0.6px 0 rgba(255, 60, 60, 0.45),
-    0.6px 0 rgba(80, 160, 255, 0.45),
-    0 0 3px color-mix(in srgb, currentColor 45%, transparent);
+    -0.5px 0 rgba(255, 60, 60, 0.3),
+    0.5px 0 rgba(80, 160, 255, 0.3),
+    0 0 2px color-mix(in srgb, currentColor 30%, transparent);
   --screen-surface: var(--surface-colour-crt);
   --scanline-bar: rgba(255, 255, 255, 0.04);
 }
@@ -194,7 +243,9 @@
   --term-font: 'IBM Convertible', 'IBM VGA', monospace;
   --bg-color: #c5cfa1;
   --punct-color: #4a5636;
-  --keyval-color: #1f2a17;
+  --syntax-color: #6b7a4f;
+  --keyval-color: #34422a;
+  --value-color: #10170b;
   --hover-color: #000000;
   /* the liquid crystal casts a shadow on the reflector behind it */
   --text-glow: 1px 1px 0 rgba(0, 0, 0, 0.14);

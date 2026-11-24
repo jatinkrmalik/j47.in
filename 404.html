@@ -144,6 +144,12 @@
     <p class="help__footer"><button type="button" data-action="close-help">[ esc ] close</button></p>
   </dialog>
   <script>
+    // Reduced motion: show the first title and skip the typing loop
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var first = document.querySelector('#strings > span');
+      var target = document.getElementById('typed');
+      if (first && target) target.textContent = first.textContent;
+    } else
     // Add a slight delay for the typed effect to enhance the terminal feel
     setTimeout(function() {
       var typed = new Typed("#typed", {

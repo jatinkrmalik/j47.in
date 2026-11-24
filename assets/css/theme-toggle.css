@@ -17,13 +17,30 @@ body::after {
   display: none;
 }
 
-/* Text style */
-.key, 
+/* Text style: three intensity levels (see themes.css).
+ * JSON punctuation is dim, keys normal, values bright. */
+#json {
+  color: var(--syntax-color, var(--punct-color));
+}
+
+.key,
 .value,
 .error {
   color: var(--keyval-color);
   transition: color 0.3s ease;
   text-shadow: var(--text-glow, 0 0 5px currentColor);
+}
+
+.value {
+  color: var(--value-color, var(--keyval-color));
+}
+
+/* Thin, offset, half-strength underline so links don't strike through
+ * the descenders of a chunky bitmap font. */
+a.value {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
 }
 
 a:hover,
@@ -36,7 +53,11 @@ a:active {
 /* JSON formatting adjustments for terminal look */
 #json::before, 
 #json::after,
-.key,
-.value {
+.key {
   letter-spacing: 0.05em;
+}
+
+/* Values are read as sentences: the font's own spacing is enough. */
+.value {
+  letter-spacing: 0;
 } 
