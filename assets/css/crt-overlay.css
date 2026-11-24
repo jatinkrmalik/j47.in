@@ -115,4 +115,11 @@
   .crt-flicker {
     display: none;
   }
+
+  /* link hover shimmer and the blinking cursors */
+  a:hover::after,
+  main::before,
+  .typed-cursor {
+    animation: none !important;
+  }
 }
