@@ -32,7 +32,9 @@ body {
 .crt main {
   position: static;
   width: calc(100% - 8vw); /* Full width minus equal left/right margins */
-  max-width: 100%;
+  /* Cap the measure: long values wrap at a comfortable ~80 characters
+   * instead of running the full width of a wide screen. */
+  max-width: min(100%, 88ch);
   min-height: 90vh; /* Use most of the viewport height */
   height: auto;
   margin: 2vh 4vw; /* Equal left and right margins */
@@ -41,9 +43,9 @@ body {
   align-self: flex-start;
   overflow-x: hidden;
 
-  /* Ensure font scales with viewport */
-  font-size: calc(0.7em + 0.5vmin);
-  line-height: 1.4;
+  /* Ensure font scales with viewport (--type-size, themes.css) */
+  font-size: var(--type-size);
+  line-height: var(--grid-line, 1.4);
 
   /* Apply scaling transform for better visibility */
   transform-origin: top left; /* Scale from top-left corner for terminal feel */
@@ -53,12 +55,23 @@ body {
   display: flex;
   flex-direction: column;
 
-  /* Prevent text overflow */
+  /* Prevent text overflow. Break long URLs, but never hyphenate words:
+   * "archi-tect" reads as a typo in monospace. */
   word-wrap: break-word;
   overflow-wrap: break-word;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
+  -webkit-hyphens: manual;
+  hyphens: manual;
+}
+
+/* Room between wrapped lines of a long value */
+.crt main .ms {
+  line-height: var(--grid-line, 1.65);
+}
+
+/* Gap between top-level entries: whole lines on the paper grid */
+.crt main .my {
+  margin-top: var(--grid-gap, 1rem);
+  margin-bottom: var(--grid-gap, 1rem);
 }
 
 /* Dynamic scaling variable (will be set via JS) */
@@ -79,11 +92,10 @@ main::before {
 @media (max-width: 480px) {
   .crt main {
     width: calc(100% - 6vw); /* Full width minus equal left/right margins */
-    max-width: 100%;
+    max-width: min(100%, 88ch);
     margin: 2vh 3vw; /* Equal left and right margins */
     padding: 2vh 0;
-    font-size: calc(0.6em + 0.5vmin);
-    min-height: 85vh;
+    min-height: 85vh; /* font size: --type-size in themes.css */
   }
 
   /* Ensure links break properly on mobile */
@@ -104,9 +116,21 @@ body::before, body::after {
   pointer-events: none;
 }
 
-/* Additional responsive font classes for nested elements */
+/* Additional responsive font classes for nested elements. On the line
+ * grid they match the line's own size: a bigger inline font would push
+ * its line box past --line and the text would drift off the grid. */
 .key, .value {
   font-size: calc(1em + 0.1vmin);
+}
+
+:root[data-theme="paper"] :is(.key, .value) {
+  font-size: 1em;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) :is(.key, .value) {
+    font-size: 1em;
+  }
 }
 
 /* Fix specific layout for the terminal JSON content */

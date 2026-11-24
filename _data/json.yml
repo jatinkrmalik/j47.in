@@ -72,6 +72,9 @@
     - key: Labelarium
       value: offline label-printer PWA
       url: https://labelarium.com
+    - key: TypeStash
+      value: self-hosted font manager for every device
+      url: https://typestash.j47.in/
     - key: localcaption
       value: offline Whisper transcription for video and audio
       url: https://github.com/jatinkrmalik/localcaption
