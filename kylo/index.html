@@ -572,7 +572,7 @@
     .slideshow .slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; }
     .slideshow .slide.is-active { opacity: 1; }
     .ring { position: absolute; top: -14px; left: -14px; width: calc(100% + 28px); height: calc(100% + 28px); pointer-events: none; }
-    .ring-track { fill: none; stroke: var(--outline); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 68.9 226.4; opacity: .55; }
+    .ring-track { fill: none; stroke: var(--outline); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 68.9 226.4; opacity: .7; }
     .ring-prog { fill: none; stroke: var(--focus); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 0 295.3; }
 
     .note { margin: 1.15rem auto 0; max-width: 24rem; background: var(--frame); border: 1px solid var(--frame-line); border-radius: 1.1rem; padding: 1.05rem 1.25rem 1.2rem; box-shadow: 0 14px 30px -22px var(--shadow); line-height: 1.6; }
@@ -724,7 +724,7 @@
   function render(frac) {
     for (var j = 0; j < progs.length; j++) {
       var v = j < idx ? SEG : (j === idx ? SEG * frac : 0);
-      progs[j].setAttribute('stroke-dasharray', v.toFixed(1) + ' ' + C);
+      progs[j].style.strokeDasharray = v.toFixed(1) + ' ' + C;
     }
   }
   function go(n, now) {
