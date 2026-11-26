@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Speaker media kit for Jatin K Malik, Principal Engineer at Atlassian: bios, headshot, talk topics, past talks and contact.">
+  <link rel="icon" href="data:,">
+  <title>Jatin K Malik - Speaker Media Kit</title>
+  <meta property="og:title" content="Jatin K Malik - Speaker Media Kit">
+  <meta property="og:description" content="Bios, headshot, talk topics and past talks for Jatin K Malik, Principal Engineer at Atlassian, architect of its agentic interfaces platform.">
+  <meta property="og:image" content="https://j47.in/kit/headshot.jpg">
+  <meta property="og:url" content="https://j47.in/kit/">
+  <meta property="og:type" content="profile">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Jatin K Malik - Speaker Media Kit">
+  <meta name="twitter:description" content="Bios, headshot, talk topics and past talks. Principal Engineer at Atlassian, agentic interfaces platform architect.">
+  <meta name="twitter:image" content="https://j47.in/kit/headshot.jpg">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('kit-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f4ee;
+      --card: #fffdf9;
+      --ink: #211b16;
+      --soft: #5c5248;
+      --rule: rgba(53, 38, 25, .16);
+      --accent: #9a552a;
+      --chip: rgba(45, 34, 24, .07);
+      --shadow: rgba(69, 39, 13, .18);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --paper: #171512;
+        --card: #242019;
+        --ink: #f6f0e7;
+        --soft: #c9bba7;
+        --rule: rgba(255, 240, 220, .16);
+        --accent: #e9b27c;
+        --chip: rgba(246, 238, 226, .09);
+        --shadow: rgba(0, 0, 0, .5);
+      }
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --paper: #171512;
+      --card: #242019;
+      --ink: #f6f0e7;
+      --soft: #c9bba7;
+      --rule: rgba(255, 240, 220, .16);
+      --accent: #e9b27c;
+      --chip: rgba(246, 238, 226, .09);
+      --shadow: rgba(0, 0, 0, .5);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 17px/1.6 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 28px 20px 64px; }
+    .topbar { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+    .toggle {
+      font: inherit; font-size: 14px; cursor: pointer;
+      background: var(--card); color: var(--ink);
+      border: 1px solid var(--rule); border-radius: 999px; padding: 6px 14px;
+    }
+    header.hero { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+    header.hero img {
+      width: 168px; height: 168px; border-radius: 16px; object-fit: cover;
+      box-shadow: 0 8px 28px var(--shadow);
+    }
+    h1 { font-size: 34px; line-height: 1.15; margin: 0 0 6px; }
+    .role { font-size: 19px; margin: 0 0 4px; }
+    .meta { color: var(--soft); margin: 0; }
+    .pitch { font-size: 18px; margin: 22px 0 0; }
+    h2 {
+      font-size: 21px; margin: 40px 0 12px; padding-bottom: 6px;
+      border-bottom: 2px solid var(--rule);
+    }
+    .card {
+      background: var(--card); border: 1px solid var(--rule);
+      border-radius: 12px; padding: 16px 18px; margin: 12px 0;
+    }
+    .card p { margin: 0; }
+    .card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .card-head span { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--soft); }
+    .copy {
+      font: inherit; font-size: 13px; cursor: pointer;
+      background: var(--chip); color: var(--ink);
+      border: 1px solid var(--rule); border-radius: 8px; padding: 4px 10px;
+    }
+    .proof { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; list-style: none; margin: 12px 0 0; }
+    .proof li { background: var(--chip); border-radius: 999px; padding: 6px 13px; font-size: 14.5px; }
+    ul.talks, ul.topics, ul.links { padding-left: 20px; margin: 8px 0; }
+    ul.talks li, ul.topics li { margin: 7px 0; }
+    .where { color: var(--soft); }
+    a { color: var(--accent); }
+    .btn {
+      display: inline-block; margin-top: 10px; text-decoration: none;
+      background: var(--ink); color: var(--paper);
+      padding: 10px 18px; border-radius: 10px; font-weight: 600;
+    }
+    footer { margin-top: 48px; color: var(--soft); font-size: 14px; border-top: 1px solid var(--rule); padding-top: 14px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <button class="toggle" id="themeToggle" type="button" aria-label="Toggle light or dark mode">Toggle theme</button>
+    </div>
+
+    <header class="hero">
+      <img src="headshot.jpg" alt="Portrait of Jatin K Malik" width="800" height="800">
+      <div>
+        <h1>Jatin K Malik</h1>
+        <p class="role">Principal Engineer, Atlassian</p>
+        <p class="meta">Architect, agentic interfaces platform (MCP, A2A, CLI)<br>San Francisco Bay Area, CA</p>
+      </div>
+    </header>
+
+    <p class="pitch">Jatin builds the layer AI agents use to reach enterprise software: Atlassian's agentic surface, used by roughly 3 million users making 50M+ tool calls a day (Nov 2026). He speaks about running agents in production, agent identity and security, and distributed systems at scale.</p>
+
+    <ul class="proof">
+      <li>Podcast: Insecure Agents Ep 67, Nov 2026</li>
+      <li>Contributor, atlassian/atlassian-mcp-server</li>
+      <li>Vocalinux: 1,000+ GitHub stars, covered by ZDNET and Phoronix</li>
+      <li>LLMFeeder: 490+ GitHub stars</li>
+      <li>11 talks, 2020-2026</li>
+    </ul>
+
+    <h2>Bios (copy-paste ready)</h2>
+
+    <div class="card">
+      <div class="card-head"><span>Short bio, ~50 words</span><button class="copy" type="button" data-copy="bio-short">Copy</button></div>
+      <p id="bio-short">Jatin K Malik is a Principal Engineer at Atlassian, where he is the architect of the agentic interfaces platform (MCP, A2A, CLI, MCP Apps, A2UI). Previously he scaled distributed systems at Uber and shipped products at Adobe. He builds local-first open source (Vocalinux, LLMFeeder) and writes at jatinkrmalik.com. Based in the San Francisco Bay Area.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>Long bio, ~150 words</span><button class="copy" type="button" data-copy="bio-long">Copy</button></div>
+      <p id="bio-long">Jatin K Malik is a Principal Engineer at Atlassian and the architect of its agentic interfaces platform in the AI Integrations org, the front door every AI agent uses to reach Jira, Confluence, Trello, Loom and the rest of Atlassian's products through MCP, A2A, CLI, MCP Apps and A2UI. That surface serves roughly 3 million users and more than 50 million tool calls a day (Nov 2026), and he is a contributor to the official atlassian/atlassian-mcp-server. He discussed how it is secured on the Insecure Agents podcast (Ep 67, Nov 2026). Before Atlassian, Jatin led architecture for Uber's Customer Obsession platform, serving billions of events a day, and shipped Adobe Experience Manager features used by Fortune 500 companies. He builds local-first open source, including Vocalinux (offline voice dictation for Linux, covered by ZDNET and Phoronix) and LLMFeeder, and has written at jatinkrmalik.com since 2011. Born in New Delhi, he lives in the San Francisco Bay Area.</p>
+    </div>
+
+    <p><a class="btn" href="headshot.jpg" download>Download headshot (800 x 800)</a></p>
+
+    <h2>Topics I speak on</h2>
+    <ul class="topics">
+      <li><strong>AI agents in production, at enterprise scale.</strong> What breaks when agents go from demo to millions of users: gateways, tool design, context, and the operational lessons from 50M+ tool calls a day.</li>
+      <li><strong>Agents are not users: identity and security for MCP.</strong> Why agents must not inherit a user's full access, how to gate destructive actions, and where the kill switches go.</li>
+      <li><strong>Distributed systems and data residency.</strong> Multi-region architecture, data portability and tenant migration, from Atlassian's 12-region data residency platform and Uber's config systems.</li>
+      <li><strong>Local-first, offline AI.</strong> Building useful AI tools that run entirely on the user's machine: the Vocalinux and LLMFeeder story, and why privacy is a feature users can feel.</li>
+    </ul>
+
+    <h2>Talks and appearances</h2>
+    <ul class="talks">
+      <li><strong>How Atlassian Secures Tens of Millions of MCP Tool Calls a Day</strong> <span class="where">- Insecure Agents podcast, Ep 67, Nov 2026 (recorded at AGNTCon + MCPCon NA)</span></li>
+      <li><strong>Cracking the Code of Customer Happiness: Real-Time Insights at Uber Scale</strong> <span class="where">- Elastic Chicago User Group, 2025</span></li>
+      <li><strong>The Redis Paradox: Beyond the Cache Horizon!</strong> <span class="where">- Delhi FOSS 2.0, 2024</span></li>
+      <li><strong>Code the Future: Your Journey into Web Dev &amp; SWE</strong> <span class="where">- TechXcelerate 2.0, 2024</span></li>
+      <li><span class="where">Atlassian x EPAM Innovation Day, May 2024</span></li>
+      <li><span class="where">Quark 2024, BITS Goa</span></li>
+      <li><span class="where">APOGEE 2024, BITS Pilani - Forge workshop (3 hours)</span></li>
+      <li><strong>The Coder's Guide to Job Security: Mastering the Art of Confusing Code!</strong> <span class="where">- FOSS United Delhi, 2023</span></li>
+      <li><strong>Elevate Your Code: Practical Insights for 10X Impact</strong> <span class="where">- FOSS Conf Delhi, 2023</span></li>
+      <li><strong>Data Portability in Enterprise Cloud</strong> <span class="where">- GDG DevFest Delhi, 2023</span></li>
+      <li><span class="where">Atlassian Tech and Product Connect, Bengaluru, Sep 2023 - data residency, co-presented</span></li>
+      <li><span class="where">Homelab talk, Apr 2020</span></li>
+    </ul>
+
+    <h2>Links and contact</h2>
+    <ul class="links">
+      <li>Writing: <a href="https://jatinkrmalik.com">jatinkrmalik.com</a> (<a href="https://jatinkrmalik.com/about/">about</a>)</li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/jatinkrmalik">linkedin.com/in/jatinkrmalik</a></li>
+      <li>X: <a href="https://x.com/jatinkrmalik">@jatinkrmalik</a></li>
+      <li>GitHub: <a href="https://github.com/jatinkrmalik">github.com/jatinkrmalik</a></li>
+      <li>Wikidata: <a href="https://www.wikidata.org/wiki/Q142178778">Q142178778</a></li>
+      <li>Speaking and consulting inquiries: <a href="mailto:jatinkrmalik@gmail.com">jatinkrmalik@gmail.com</a></li>
+    </ul>
+
+    <footer>
+      Everything on this page is free to reuse for event pages, podcast notes and introductions. Numbers are dated; ask if you need current ones. Personal site: <a href="https://j47.in">j47.in</a>.
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('themeToggle');
+      function current() {
+        var t = root.getAttribute('data-theme');
+        if (t) return t;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      btn.addEventListener('click', function () {
+        var next = current() === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('kit-theme', next); } catch (e) {}
+      });
+      document.querySelectorAll('.copy').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var el = document.getElementById(b.getAttribute('data-copy'));
+          if (!el || !navigator.clipboard) return;
+          navigator.clipboard.writeText(el.textContent.trim()).then(function () {
+            var old = b.textContent;
+            b.textContent = 'Copied';
+            setTimeout(function () { b.textContent = old; }, 1500);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
