@@ -377,6 +377,98 @@
 
     .contact:active { background: var(--button-pressed); }
 
+    button.button {
+      width: 100%;
+      border: 0;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    body.modal-open { overflow: hidden; }
+
+    .contact-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      background: rgba(0, 0, 0, .45);
+    }
+
+    .contact-overlay[hidden] { display: none; }
+
+    .contact-card {
+      position: relative;
+      width: min(100%, 22rem);
+      padding: 2rem 1.5rem 1.5rem;
+      border: 1px solid var(--frame-line);
+      border-radius: 1.25rem;
+      background: var(--frame);
+      box-shadow: 0 24px 46px -24px var(--shadow);
+      text-align: center;
+    }
+
+    .contact-close {
+      position: absolute;
+      top: .6rem;
+      right: .6rem;
+      width: 2.4rem;
+      height: 2.4rem;
+      border: 0;
+      border-radius: 50%;
+      color: var(--soft-ink);
+      background: transparent;
+      font: inherit;
+      font-size: 1.6rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .contact-close:hover { background: var(--outline-fill); }
+
+    .contact-close:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .contact-name {
+      margin: 0;
+      font-family: Baskerville, "Iowan Old Style", Palatino, Georgia, serif;
+      font-size: 1.9rem;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+
+    .contact-role {
+      margin: .3rem 0 0;
+      color: var(--soft-ink);
+      font-size: .94rem;
+    }
+
+    .contact-phone {
+      margin: 1.1rem 0 1.4rem;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      white-space: nowrap;
+    }
+
+    .contact-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .7rem;
+    }
+
+    .contact-text {
+      color: var(--ink);
+      box-shadow: inset 0 0 0 1.5px var(--outline);
+    }
+
+    .contact-text:active { background: var(--outline-fill); }
+
     .facts {
       margin: 1.7rem 0 0;
       padding: 0;
@@ -436,6 +528,7 @@
 
     @media (hover: hover) {
       .contact:hover { background: var(--button-pressed); }
+      .contact-text:hover { background: var(--outline-fill); }
     }
 
     @media (min-width: 720px) {
@@ -532,18 +625,17 @@
 
     <h1>You’ve found <em>Kylo</em>.</h1>
     <p class="note"><strong>Kylo is a very good boy.</strong><br>You can approach him. He’s very friendly, won’t bite, and is always hungry. A treat or a little food is the easiest way to win him over.</p>
-    <p class="owner-details">His owner is Jatin. Contact details are on his homepage.</p>
+    <p class="owner-details">His owner is Jatin.</p>
 
     <div class="actions" aria-label="Contact Kylo’s owner">
-      <a class="button contact" href="https://j47.in/" target="_blank" rel="noreferrer" aria-label="Open Jatin’s homepage for owner contact details">
+      <button type="button" class="button contact" id="contact-open" aria-haspopup="dialog">
         <span class="button-inner">
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/>
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>
           </svg>
-          <span class="button-title">Owner details &amp; contact</span>
+          <span class="button-title">Contact Jatin</span>
         </span>
-      </a>
+      </button>
     </div>
 
     <dl class="facts" aria-label="A few facts about Kylo">
@@ -573,6 +665,18 @@
       </div>
     </dl>
   </main>
+  <div class="contact-overlay" id="contact-overlay" hidden>
+    <div class="contact-card" role="dialog" aria-modal="true" aria-label="Contact Jatin">
+      <button type="button" class="contact-close" id="contact-close" aria-label="Close">&times;</button>
+      <h2 class="contact-name">Jatin Malik</h2>
+      <p class="contact-role">Kylo’s owner</p>
+      <p class="contact-phone">+1 (773) 800-8636</p>
+      <div class="contact-actions">
+        <a class="button contact" href="tel:+17738008636"><span class="button-title">Call</span></a>
+        <a class="button contact-text" href="sms:+17738008636"><span class="button-title">Text</span></a>
+      </div>
+    </div>
+  </div>
   <script>
     (function () {
       var birthday = new Date(2021, 0, 16);
@@ -582,6 +686,34 @@
         (today.getMonth() === birthday.getMonth() && today.getDate() >= birthday.getDate());
       if (!birthdayPassed) age -= 1;
       document.getElementById("kylo-age").textContent = age + (age === 1 ? " year old" : " years old");
+    }());
+
+    (function () {
+      var openButton = document.getElementById("contact-open");
+      var overlay = document.getElementById("contact-overlay");
+      var closeButton = document.getElementById("contact-close");
+
+      function open() {
+        overlay.hidden = false;
+        document.body.classList.add("modal-open");
+        closeButton.focus();
+      }
+
+      function close() {
+        if (overlay.hidden) return;
+        overlay.hidden = true;
+        document.body.classList.remove("modal-open");
+        openButton.focus();
+      }
+
+      openButton.addEventListener("click", open);
+      closeButton.addEventListener("click", close);
+      overlay.addEventListener("click", function (event) {
+        if (event.target === overlay) close();
+      });
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") close();
+      });
     }());
   </script>
 </body>
